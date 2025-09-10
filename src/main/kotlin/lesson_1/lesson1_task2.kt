@@ -32,7 +32,8 @@ fun main() {
 
     var countOfMarketplaceStuff = 2000
 
-//    println("Current stuff: $countOfMarketplaceStuff")
+    // Строку ниже раскомментировал, т.к. из-за предупреждения не создается pull request
+    println("Current stuff: $countOfMarketplaceStuff")
 
     countOfMarketplaceStuff = 1999 // По заданию требуется присвоить значение, но можно и уволить одного, т.е. --
 
