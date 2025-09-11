@@ -20,8 +20,6 @@ package lesson_1
 
 fun main() {
 
-    //TIP Sorry, my english is so-so...
-
     val yearOfFirstHumanUpToSpace = 1961
     var hourOfFirstHumanUpToSpace = 9
     var minuteOfFirstHumanUpToSpace = 7
@@ -33,10 +31,5 @@ fun main() {
     hourOfFirstHumanUpToSpace = 10
     minuteOfFirstHumanUpToSpace = 55
 
-    // функцию print() не использовал, т.к. сразу собрал строку в требуемом формате
-    println("$hourOfFirstHumanUpToSpace:$minuteOfFirstHumanUpToSpace")
-
-    // Спасибо C, приятно узнать, что корректно (в привычном виде для любого значения времени)
-    // собрать строку можно как в ...printf() )
     println(String.format("%02d:%02d", hourOfFirstHumanUpToSpace, minuteOfFirstHumanUpToSpace))
 }
