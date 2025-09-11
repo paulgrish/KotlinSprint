@@ -1,6 +1,6 @@
 package lesson_1
 
-//TIP Задача 2 к Уроку 1.
+// Задача 2 к Уроку 1.
 //
 // Скопируй решение из задачи 1 в новый файл с задачей 2. Теперь необходимо дописать реализацию программы для новых целей.
 // Имитируем логи с сервера.
@@ -14,26 +14,12 @@ package lesson_1
 
 fun main() {
 
-    val maxNumberOfOrders = 75
-    var countOfCurrentOrders = 25
-    val thanksMessage = "Благодарим Вас за покупку в нашем интернет-магазине! Будем рады видеть Вас снова!"
-
-    // Вывод переменных уже был, поэтому оставил его как есть
-    println("Your order #$countOfCurrentOrders in max $maxNumberOfOrders orders is complete")
-    countOfCurrentOrders--
-    println("Your order #$countOfCurrentOrders in max $maxNumberOfOrders orders is complete")
-    println(thanksMessage)
-
-    val widthOfDoorInCm = 80.0f
-    val heightOfDoorInCm = 200.0f
-    val materialForDoor = "wood"
-
-    println("Have you $materialForDoor door with size $widthOfDoorInCm x $heightOfDoorInCm cm?")
+    val countOfCurrentOrders: Int = 75
+    val thanksMessage: String = "Благодарим Вас за покупку в нашем интернет-магазине! Будем рады видеть Вас снова!"
 
     var countOfMarketplaceStuff = 2000
 
-    // Строку ниже раскомментировал, т.к. из-за предупреждения не создается pull request
-    println("Current stuff: $countOfMarketplaceStuff")
+//    println("Current stuff: $countOfMarketplaceStuff")
 
     countOfMarketplaceStuff = 1999 // По заданию требуется присвоить значение, но можно и уволить одного, т.е. --
 
