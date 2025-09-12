@@ -17,6 +17,9 @@ fun main() {
     val countOfCurrentOrders: Int = 75
     val thanksMessage: String = "Благодарим Вас за покупку в нашем интернет-магазине! Будем рады видеть Вас снова!"
 
+    println(countOfCurrentOrders)
+    println(thanksMessage)
+
     var countOfMarketplaceStuff = 2000
 
 //    println("Current stuff: $countOfMarketplaceStuff")
