@@ -25,8 +25,8 @@ fun main() {
     var minuteOfFirstHumanUpToSpace = 7
 
     println(yearOfFirstHumanUpToSpace)
-    println(hourOfFirstHumanUpToSpace)
-    println(minuteOfFirstHumanUpToSpace)
+    println("%02d".format(hourOfFirstHumanUpToSpace))
+    println("%02d".format(minuteOfFirstHumanUpToSpace))
 
     hourOfFirstHumanUpToSpace = 10
     minuteOfFirstHumanUpToSpace = 55
