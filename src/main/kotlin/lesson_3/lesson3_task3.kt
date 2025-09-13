@@ -19,4 +19,17 @@ package org.example.lesson_3
  */
 fun main() {
 
+    val multipliable = 6
+
+    println("""
+         |$multipliable x 1 = ${multipliable * 1}
+         |$multipliable x 2 = ${multipliable * 2}
+         |$multipliable x 3 = ${multipliable * 3}
+         |$multipliable x 4 = ${multipliable * 4}
+         |$multipliable x 5 = ${multipliable * 5}
+         |$multipliable x 6 = ${multipliable * 6}
+         |$multipliable x 7 = ${multipliable * 7}
+         |$multipliable x 8 = ${multipliable * 8}
+         |$multipliable x 9 = ${multipliable * 9}
+            """.trimMargin())
 }
