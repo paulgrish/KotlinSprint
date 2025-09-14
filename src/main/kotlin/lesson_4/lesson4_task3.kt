@@ -23,4 +23,16 @@ package lesson_4
  */
 fun main() {
 
+    val sunshine = true
+    val tentOpened = true
+    val wetness = 20
+    val season = "зима"
+
+    println("Благоприятные ли условия сейчас для роста бобовых? ${sunshine == COND_SUNSHINE && tentOpened == COND_TENT_OPENED && wetness == COND_WETNESS && season != COND_NOT_SEASON}")
+
 }
+
+const val COND_SUNSHINE = true
+const val COND_TENT_OPENED = true
+const val COND_WETNESS = 20
+const val COND_NOT_SEASON = "зима"
