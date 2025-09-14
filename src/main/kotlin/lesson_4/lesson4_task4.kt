@@ -11,8 +11,8 @@ package lesson_4
  * в виде нескольких красивых ровных строк.
  *
  * Вывод должен быть таким:
- * Упражнения для рук:       true
- * Упражнения для ног:       false
+ * Упражнения для рук:    true
+ * Упражнения для ног:    false
  * Упражнения для спины:  false
  * Упражнения для пресса: true
  *
@@ -21,4 +21,18 @@ package lesson_4
  */
 fun main() {
 
+    val dayNumber = 5
+
+    val dayKind = (dayNumber % 2) == 1
+
+    println("$EXEC_PREFIX рук:    ${dayKind == DAY_KIND_FOR_HANDS}")
+    println("$EXEC_PREFIX ног:    ${dayKind == DAY_KIND_FOR_LEGS}")
+    println("$EXEC_PREFIX спины:  ${dayKind == DAY_KIND_FOR_NECK}")
+    println("$EXEC_PREFIX пресса: ${dayKind == DAY_KIND_FOR_PRESS}")
 }
+
+const val DAY_KIND_FOR_HANDS = true
+const val DAY_KIND_FOR_LEGS = false
+const val DAY_KIND_FOR_NECK = false
+const val DAY_KIND_FOR_PRESS = true
+const val EXEC_PREFIX = "Упражнения для"
