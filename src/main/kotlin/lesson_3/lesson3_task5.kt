@@ -13,9 +13,9 @@ fun main() {
 
     val userMoveString = "D2-D4;0"
 
-    val moveFrom = userMoveString.substring(0..1)
-    val moveTo = userMoveString.substring(3..4)
-    val moveNumber = userMoveString.substring(6 until userMoveString.length).toInt()
+    val (moveFromToString, moveNumberString) = userMoveString.split(';')
+    val (moveFrom, moveTo) = moveFromToString.split('-')
+    val moveNumber = moveNumberString.toInt()
 
     println(moveFrom)
     println(moveTo)
