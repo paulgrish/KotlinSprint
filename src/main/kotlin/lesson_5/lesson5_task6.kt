@@ -22,4 +22,22 @@ package lesson_5
  */
 fun main() {
 
+    println("Введите ваши данные.")
+    print("Вес (в килограммах): ")
+    val userWeight = readln().toDouble()
+    print("Рост (в сантиметрах): ")
+    var userHeight = readln().toDouble()
+    userHeight /= 100.0
+
+    val imt = userWeight / (userHeight * userHeight)
+
+    val resultText = when {
+        imt < 18.5 -> "Недостаточная масса тела"
+        imt < 25 -> "Нормальная масса тела"
+        imt < 30 -> "Избыточная масса тела"
+        else -> "Ожирение"
+    }
+
+    println("Ваш результат: ИМТ = %.2f, %s".format(imt, resultText))
+
 }
