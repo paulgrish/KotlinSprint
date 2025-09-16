@@ -12,8 +12,7 @@ package lesson_5
  */
 fun main() {
 
-    val number1 = 23
-    val number2 = 45
+    val (number1, number2) = (1..99).shuffled().take(2)
 
     println("Докажите, что вы не бот.\nЧему равна сумма чисел $number1 и $number2?")
     val userAnswer = readln().toInt()
