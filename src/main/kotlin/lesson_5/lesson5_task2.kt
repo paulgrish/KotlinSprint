@@ -13,5 +13,15 @@ package lesson_5
  *  – Если год рождения подходит, выводить сообщение “Показать экран со скрытым контентом”.
  */
 fun main() {
-    
+
+    val userBornYear = readln().toInt()
+    val userAge = CURRENT_YEAR - userBornYear
+
+    if (userAge >= AGE_OF_MAJORITY) {
+        println("Показать экран со скрытым контентом")
+    }
+
 }
+
+const val AGE_OF_MAJORITY = 18
+const val CURRENT_YEAR = 2025
