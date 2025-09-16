@@ -1,3 +1,5 @@
+package lesson_5
+
 /**
  * Задача 5* к Уроку 5
  *
@@ -17,5 +19,24 @@
  * - В конце игры вне зависимости от результата программа выводит выигрышные числа.
  */
 fun main() {
+
+    val hiddenNumbers = (0..42).shuffled().take(3).sorted()
+//    val hiddenNumbers = listOf(11, 22, 33) // test case
+
+    println("Введите 3 числа:")
+    val userNumbers = readln().split(' ').mapNotNull { it.toIntOrNull() }.toSet().take(3).toList()
+
+    val matches = hiddenNumbers.intersect(userNumbers).size
+
+    val resultMessage = when (matches) {
+        3 -> "Вы угадали все числа и выиграли джекпот!"
+        2 -> "Вы угадали два числа и получаете крупный приз!"
+        1 -> "Вы угадали одно число получаете утешительный приз."
+        0 -> "Вы не угадали ни одного числа."
+        else -> "Что-то пошло не так. Примите участие в следующем тираже нашей лотереи!"
+    }
+
+    println(resultMessage)
+    println("Выигрышные числа: ${hiddenNumbers.joinToString(" ")}")
 
 }
