@@ -15,4 +15,23 @@ package lesson_5
  */
 fun main() {
 
+    val number1 = 11
+    val number2 = 27
+
+    println("Введите два числа:")
+    val (userNumber1, userNumber2) = readln().split(' ').take(2).map { it.toInt() }
+
+    val resultMessage = if (userNumber1 == number1 && userNumber2 == number2 ||
+        userNumber1 == number2 && userNumber2 == number1
+    ) {
+        "Поздравляем! Вы выиграли главный приз!"
+    } else if (userNumber1 == number1 || userNumber1 == number2 ||
+        userNumber2 == number1 || userNumber2 == number2
+    ) {
+        "Вы выиграли утешительный приз!"
+    } else {
+        "Неудача!"
+    }
+
+    println(resultMessage)
 }
