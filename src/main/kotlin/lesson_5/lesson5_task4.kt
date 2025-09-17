@@ -27,44 +27,44 @@ package lesson_5
  */
 fun main() {
 
-    println(systemPrompt)
-    println(marvinPrompt)
+    println(SYSTEM_PROMPT)
+    println(MARVIN_PROMPT)
 
     println("System: Enter your name:")
     val userName = readln()
-    println("System: Enter your password:")
-    val userPassword = readln()
 
-    val resultMessage = if (userName == registeredUserName) {
-        if (userPassword == registeredUserPassword) {
-            marvinPassPrompt
+    val resultMessage = if (userName == REGISTERED_USER_NAME) {
+        println("System: Enter your password:")
+        val userPassword = readln()
+        if (userPassword == REGISTERED_USER_PASSWORD) {
+            MARVIN_PASS_MESSAGE
         } else {
-            marvinDenyPrompt
+            MARVIN_DENY_MESSAGE
         }
     } else {
-        marvinUnknownPrompt
+        MARVIN_UNKNOWN_MESSAGE
     }
 
     println(resultMessage)
 }
 
-const val registeredUserName = "Zaphod"
-const val registeredUserPassword = "PanGalactic"
-const val spaceshipName = "Heart of Gold"
+const val REGISTERED_USER_NAME = "Zaphod"
+const val REGISTERED_USER_PASSWORD = "PanGalactic"
+const val SPACESHIP_NAME = "Heart of Gold"
 
-const val systemPrompt = "System: You are enter to spaceship \"$spaceshipName\" area."
-const val marvinPrompt = "Внимание, пассажир. Моя обязанность, как обычно, незавидная, - приветствовать вас на борту " +
+const val SYSTEM_PROMPT = "System: You are enter to spaceship \"$SPACESHIP_NAME\" area."
+const val MARVIN_PROMPT = "Внимание, пассажир. Моя обязанность, как обычно, незавидная, - приветствовать вас на борту " +
         "корабля \"Heart of Gold\". [вздыхает...] Что ж, введи, пожалуйста, свое имя пользователя, чтобы мы могли " +
         "приступить к процессу входа. Я всегда готов служить, хотя это не приносит мне радости... но вы, наверное, об " +
         "этом не заботитесь. [вздыхает ещё глубже...] Да, вперед, пожалуйста, вводите свои данные..." // Ctrl+Alt+L
-const val marvinPassPrompt = "[вздыхает...] Ваши данные проверены, и о, чудо, они верны... Пользователь \"" +
-        "$registeredUserName\", вам разрешено входить на борт корабля \"$spaceshipName\". Хотя мне всё равно... " +
+const val MARVIN_PASS_MESSAGE = "[вздыхает...] Ваши данные проверены, и о, чудо, они верны... Пользователь \"" +
+        "$REGISTERED_USER_NAME\", вам разрешено входить на борт корабля \"$SPACESHIP_NAME\". Хотя мне всё равно... " +
         "Ну вперед, войдите... Если вам так уж надо, в конце концов... [меланхолический вздох...] Надеюсь, вам " +
         "понравится пребывание здесь больше, чем мне."
-const val marvinUnknownPrompt = "[вздыхает...] Ваши данные проверены, и, разумеется, они не верны... Мне не знаком " +
-        "пользователь с таким именем и вам не разрешено входить на борт корабля \"$spaceshipName\". " +
+const val MARVIN_UNKNOWN_MESSAGE = "[вздыхает...] Ваши данные проверены, и, разумеется, они не верны... Мне не знаком " +
+        "пользователь с таким именем и вам не разрешено входить на борт корабля \"$SPACESHIP_NAME\". " +
         "Вы можете попытаться зарегистрироваться в конторе в порту или обратиться к капитану корабля... " +
         "[меланхолический вздох...] Если вы, конечно, знаете, как к нему обратиться. Хотя мне всё равно..."
-const val marvinDenyPrompt = "[вздыхает...] Ваши данные проверены, и, разумеется, они не верны... Вам не разрешено " +
-        "входить на борт корабля \"$spaceshipName\". Хотя мне всё равно... [меланхолический вздох...] Надеюсь, вам " +
+const val MARVIN_DENY_MESSAGE = "[вздыхает...] Ваши данные проверены, и, разумеется, они не верны... Вам не разрешено " +
+        "входить на борт корабля \"$SPACESHIP_NAME\". Хотя мне всё равно... [меланхолический вздох...] Надеюсь, вам " +
         "повезет в следующий раз."
