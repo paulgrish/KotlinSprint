@@ -15,23 +15,26 @@ package lesson_5
  */
 fun main() {
 
-    val number1 = 11
-    val number2 = 27
-
-    println("Введите два числа:")
-    val (userNumber1, userNumber2) = readln().split(' ').take(2).map { it.toInt() }
-
-    val resultMessage = if (userNumber1 == number1 && userNumber2 == number2 ||
-        userNumber1 == number2 && userNumber2 == number1
-    ) {
-        "Поздравляем! Вы выиграли главный приз!"
-    } else if (userNumber1 == number1 || userNumber1 == number2 ||
-        userNumber2 == number1 || userNumber2 == number2
-    ) {
-        "Вы выиграли утешительный приз!"
-    } else {
-        "Неудача!"
+    val number1 = (MIN_NUMBER..MAX_NUMBER).random()
+    val number2 = (MIN_NUMBER..MAX_NUMBER - 1).random().let {
+        if (it >= number1) it + 1 else it
     }
 
+    println("Введите два числа от $MIN_NUMBER до $MAX_NUMBER включительно через пробел:")
+    val (userNumber1, userNumber2) = readln().split(' ').mapNotNull { it.toIntOrNull() }.take(2)
+
+    val resultMessage =
+        if (userNumber1 == number1 && userNumber2 == number2 || userNumber1 == number2 && userNumber2 == number1) {
+            "Поздравляем! Вы выиграли главный приз!"
+        } else if (userNumber1 == number1 || userNumber1 == number2 || userNumber2 == number1 || userNumber2 == number2) {
+            "Вы выиграли утешительный приз!"
+        } else {
+            "Неудача!"
+        }
+
     println(resultMessage)
+    println("Выигрышные числа: $number1 и $number2")
 }
+
+const val MIN_NUMBER = 0
+const val MAX_NUMBER = 42
