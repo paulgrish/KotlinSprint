@@ -26,18 +26,22 @@ fun main() {
     print("Вес (в килограммах): ")
     val userWeight = readln().toDouble()
     print("Рост (в сантиметрах): ")
-    var userHeight = readln().toDouble()
-    userHeight /= 100.0
+    val userHeight = readln().toDouble() / CANTI_IN_METER
 
     val imt = userWeight / (userHeight * userHeight)
 
     val resultText = when {
-        imt < 18.5 -> "Недостаточная масса тела"
-        imt < 25 -> "Нормальная масса тела"
-        imt < 30 -> "Избыточная масса тела"
-        else -> "Ожирение"
+        imt >= IMT_FAT_START -> "Ожирение"
+        imt >= IMT_MORE_START -> "Избыточная масса тела"
+        imt >= IMT_NORM_START -> "Нормальная масса тела"
+        else -> "Недостаточная масса тела"
     }
 
     println("Ваш результат: ИМТ = %.2f, %s".format(imt, resultText))
 
 }
+
+const val CANTI_IN_METER = 100.0
+const val IMT_NORM_START = 18.5
+const val IMT_MORE_START = 25.0
+const val IMT_FAT_START = 30.0
