@@ -20,23 +20,33 @@ package lesson_5
  */
 fun main() {
 
-    val hiddenNumbers = (0..42).shuffled().take(3).sorted()
-//    val hiddenNumbers = listOf(11, 22, 33) // test case
+    val hiddenNumbers = (MIN_NUMBER..MAX_NUMBER).shuffled().take(COUNT_OF_NUMBERS).sorted()
 
-    println("Введите 3 числа:")
-    val userNumbers = readln().split(' ').mapNotNull { it.toIntOrNull() }.toSet().take(3).toList()
+    println("Введите $COUNT_OF_NUMBERS разных чисел от $MIN_NUMBER до $MAX_NUMBER включительно через пробел:")
+    val userItems = readln().split(' ').filter { it.length != 0 }
+    val userAllNumbers = userItems.mapNotNull { it.toIntOrNull() }
+    val userNumbers = userAllNumbers.filter { it in MIN_NUMBER..MAX_NUMBER }.toSet().toList()
 
-    val matches = hiddenNumbers.intersect(userNumbers).size
+    if (userItems.size != COUNT_OF_NUMBERS || userAllNumbers.size != COUNT_OF_NUMBERS ||
+        userNumbers.size != COUNT_OF_NUMBERS
+    ) {
+        println("Необходимо было ввести $COUNT_OF_NUMBERS разных чисел от $MIN_NUMBER до $MAX_NUMBER включительно")
+    } else {
+        val matches = hiddenNumbers.intersect(userNumbers).size
 
-    val resultMessage = when (matches) {
-        3 -> "Вы угадали все числа и выиграли джекпот!"
-        2 -> "Вы угадали два числа и получаете крупный приз!"
-        1 -> "Вы угадали одно число получаете утешительный приз."
-        0 -> "Вы не угадали ни одного числа."
-        else -> "Что-то пошло не так. Примите участие в следующем тираже нашей лотереи!"
+        val resultMessage = when (matches) {
+            3 -> "Вы угадали все числа и выиграли джекпот!"
+            2 -> "Вы угадали два числа и получаете крупный приз!"
+            1 -> "Вы угадали одно число получаете утешительный приз."
+            0 -> "Вы не угадали ни одного числа."
+            else -> "Что-то пошло не так. Примите участие в следующем тираже нашей лотереи!"
+        }
+
+        println(resultMessage)
+        println("Выигрышные числа: ${hiddenNumbers.joinToString(" ")}")
     }
-
-    println(resultMessage)
-    println("Выигрышные числа: ${hiddenNumbers.joinToString(" ")}")
-
 }
+
+const val MIN_NUMBER = 0
+const val MAX_NUMBER = 42
+const val COUNT_OF_NUMBERS = 3
