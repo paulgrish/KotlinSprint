@@ -1,7 +1,7 @@
 package org.example.lesson_6
 
 /**
- * ЗЗадача 4 к Уроку 6
+ * Задача 4 к Уроку 6
  *
  * Напиши небольшую консольную игру, в которой нужно угадать число в промежутке от 1 до 9. Игроку дается 5 попыток,
  * чтобы угадать это число.
@@ -11,22 +11,36 @@ package org.example.lesson_6
  */
 fun main() {
 
-    var timerPeriodInSeconds: Long
+    val hiddenNumber = (HIDDEN_NUMBER_START..HIDDEN_NUMBER_END).random()
+    var attempt = NUMBER_OF_ATTEMPTS
 
-    while (true) {
-        println("Задайте длительность работы таймера (в секундах):")
-        timerPeriodInSeconds = readln().toLong()
-        if (timerPeriodInSeconds > 0)
+    println("Отгадайте число от $HIDDEN_NUMBER_START до $HIDDEN_NUMBER_END за $NUMBER_OF_ATTEMPTS попыток.")
+
+    while (attempt > 0) {
+
+        var userNumber: Int
+
+        while (true) {
+            println("Ведите ваше число:")
+            userNumber = readln().toInt()
+            if (userNumber >= HIDDEN_NUMBER_START && userNumber <=HIDDEN_NUMBER_END)
+                break
+            println("Число должно быть от $HIDDEN_NUMBER_START до $HIDDEN_NUMBER_END!")
+        }
+
+        if (userNumber == hiddenNumber)
             break
-        println("Длительность работы таймера должна быть положительным числом!")
+
+        println("Неверно.\nОсталось попыток: ${--attempt}.")
     }
 
-    println("Таймер запущен...")
-    while (timerPeriodInSeconds > 0) {
-        println("Осталось секунд: ${timerPeriodInSeconds--}")
-        Thread.sleep(1000L)
-    }
-
-    println("Время вышло")
+    if (attempt > 0)
+        println("Это была великолепная игра!")
+    else
+        println("Было загадано число $hiddenNumber.")
 
 }
+
+const val HIDDEN_NUMBER_START = 1
+const val HIDDEN_NUMBER_END = 9
+const val NUMBER_OF_ATTEMPTS = 5
