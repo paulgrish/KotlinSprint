@@ -10,5 +10,20 @@ package org.example.lesson_6
  * “Авторизация прошла успешно”.
  */
 fun main() {
-    
+
+    println("Регистрация пользователя.\nВведите данные для создания аккаунта.")
+    print("Логин: ")
+    val registeredLogin = readln()
+    print("Пароль: ")
+    val registeredPassword = readln()
+
+    do {
+        println("Введите данные для входа в систему.")
+        print("Логин: ")
+        val userLogin = readln()
+        print("Пароль: ")
+        val userPassword = readln()
+    } while(userLogin != registeredLogin || userPassword != registeredPassword)
+
+    println("Авторизация прошла успешно")
 }
