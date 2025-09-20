@@ -1,4 +1,4 @@
-package lesson_5
+package lesson_5.task5
 
 /**
  * Задача 5* к Уроку 5
