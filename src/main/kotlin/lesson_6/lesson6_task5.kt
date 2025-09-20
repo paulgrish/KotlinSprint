@@ -3,46 +3,45 @@ package org.example.lesson_6
 import kotlin.ranges.random
 
 /**
- * Задача 4 к Уроку 6
+ * Задача 5* к Уроку 6
  *
- * Напиши небольшую консольную игру, в которой нужно угадать число в промежутке от 1 до 9. Игроку дается 5 попыток,
- * чтобы угадать это число.
- *  – если игрок угадывает число, выводится сообщение “Это была великолепная игра!” и программа завершает работу;
- *  – если не угадывает, то отображается "Неверно" или что-то на твое усмотрение и оставшееся количество попыток;
- *  – после истечения попыток выводится сообщение “Было загадано число N”.
+ * Доработка задачи на авторизацию. Нужно написать часть модуля для авторизации пользователя. Для входа в приложение
+ * пользователь должен доказать, что он не бот. Для этого программа предлагает решить простой математический пример –
+ * сложить два числа. Имитируй эти действия в консоли, путем считывания данных с клавиатуры.
+ *
+ * При успешном решении вход в программу символизируется сообщением “Добро пожаловать!". Дай пользователю три попытки
+ * пройти тест. Для этого придется каждый раз генерировать новый математический пример и предлагать решить его заново.
+ *
+ * Для простоты ограничься примерами на сложение с использованием цифр от 1 до 9. Если три попытки оказались неудачными,
+ * вывести сообщение "Доступ запрещен".
  */
 fun main() {
 
-    val hiddenNumber = (HIDDEN_NUMBER_START..HIDDEN_NUMBER_END).random()
     var attempt = NUMBER_OF_ATTEMPTS
 
-    println("Отгадайте число от $HIDDEN_NUMBER_START до $HIDDEN_NUMBER_END за $NUMBER_OF_ATTEMPTS попыток.")
-
+    println("Докажите, что вы не бот.")
     while (attempt > 0) {
 
-        var userNumber: Int
+        val number1 = (NUMBER_START..NUMBER_END).random()
+        val number2 = (NUMBER_START..NUMBER_END).random()
 
-        while (true) {
-            println("Ведите ваше число:")
-            userNumber = readln().toInt()
-            if (userNumber >= HIDDEN_NUMBER_START && userNumber <=HIDDEN_NUMBER_END)
-                break
-            println("Число должно быть от $HIDDEN_NUMBER_START до $HIDDEN_NUMBER_END!")
-        }
+        println("Решите пример: $number1 + $number2 = ")
+        val userNumber = readln().toInt()
 
-        if (userNumber == hiddenNumber)
+        if (userNumber == number1 + number2)
             break
 
-        println("Неверно.\nОсталось попыток: ${--attempt}.")
+        println("Это неправильный ответ.")
+        attempt--
     }
 
     if (attempt > 0)
-        println("Это была великолепная игра!")
+        println("Добро пожаловать!")
     else
-        println("Было загадано число $hiddenNumber.")
+        println("Доступ запрещен.")
 
 }
 
-const val HIDDEN_NUMBER_START = 1
-const val HIDDEN_NUMBER_END = 9
-const val NUMBER_OF_ATTEMPTS = 5
+const val NUMBER_START = 1
+const val NUMBER_END = 9
+const val NUMBER_OF_ATTEMPTS = 3
