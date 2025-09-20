@@ -9,4 +9,19 @@ package org.example.lesson_6
  */
 fun main() {
 
+    var timerPeriodInSeconds: Long
+
+    while (true) {
+        println("Задайте длительность работы таймера (в секундах):")
+        timerPeriodInSeconds = readln().toLong()
+        if (timerPeriodInSeconds > 0)
+            break
+        println("Длительность работы таймера должна быть положительным числом!")
+    }
+
+    println("Таймер запущен...")
+    Thread.sleep(timerPeriodInSeconds * 1000L)
+
+    println("Прошло $timerPeriodInSeconds секунд")
+
 }
