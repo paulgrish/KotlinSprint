@@ -22,8 +22,11 @@ fun main() {
     }
 
     println("Таймер запущен...")
-    Thread.sleep(timerPeriodInSeconds * 1000L)
+    while (timerPeriodInSeconds > 0) {
+        println("Осталось секунд: ${timerPeriodInSeconds--}")
+        Thread.sleep(1000L)
+    }
 
-    println("Прошло $timerPeriodInSeconds секунд")
+    println("Время вышло")
 
 }
