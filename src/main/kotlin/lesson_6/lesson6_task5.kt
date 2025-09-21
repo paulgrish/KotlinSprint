@@ -25,7 +25,7 @@ fun main() {
         val number1 = (NUMBER_START..NUMBER_END).random()
         val number2 = (NUMBER_START..NUMBER_END).random()
 
-        println("Решите пример: $number1 + $number2 = ")
+        print("Решите пример: $number1 + $number2 = ")
         val userNumber = readln().toInt()
 
         if (userNumber == number1 + number2)
