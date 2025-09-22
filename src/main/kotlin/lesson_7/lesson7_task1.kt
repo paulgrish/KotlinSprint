@@ -9,4 +9,14 @@ package lesson_7
  */
 fun main() {
 
+    val passwordCharSet = ('a' .. 'z').toList() + ('0' .. '9').toList()
+
+    print("New password: ")
+    for (i in 1 .. PASSWORD_LENGTH) {
+        print(passwordCharSet.random())
+    }
+    println()
+
 }
+
+const val PASSWORD_LENGTH = 6
