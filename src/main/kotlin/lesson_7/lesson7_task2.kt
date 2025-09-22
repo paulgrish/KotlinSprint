@@ -13,14 +13,23 @@ package lesson_7
  */
 fun main() {
 
-    val passwordCharSet = ('a' .. 'z').toList() + ('0' .. '9').toList()
+    var autorizationCode: Int
+    var userAutorizationCode: Int
 
-    print("New password: ")
-    for (i in 1 .. PASSWORD_LENGTH) {
-        print(passwordCharSet.random())
+    while (true) {
+        autorizationCode = (AUTHORIZATION_CODE_START .. AUTHORIZATION_CODE_END).random()
+        println("Ваш код авторизации: $autorizationCode")
+
+        print("Введите ваш код авторизации: ")
+        userAutorizationCode = readln().toInt()
+
+        if (userAutorizationCode == autorizationCode)
+            break
     }
-    println()
+
+    println("Авторизация прошла успешно!")
 
 }
 
-const val PASSWORD_LENGTH = 6
+const val AUTHORIZATION_CODE_START = 1000
+const val AUTHORIZATION_CODE_END = 9999
