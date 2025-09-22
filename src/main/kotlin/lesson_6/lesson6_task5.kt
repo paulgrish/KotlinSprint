@@ -1,4 +1,4 @@
-package org.example.lesson_6
+package lesson_6.task_5
 
 import kotlin.ranges.random
 
