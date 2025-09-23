@@ -13,7 +13,7 @@ fun main() {
     val passwordDigitSet = '0'..'9'
 
     print("New password: ")
-    for (i in 1..PASSWORD_LENGTH) {
+    for (i in 0 until PASSWORD_LENGTH) {
         print(
             (
                 if (i % 2 == 0)
