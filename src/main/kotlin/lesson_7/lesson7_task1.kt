@@ -9,11 +9,19 @@ package lesson_7
  */
 fun main() {
 
-    val passwordCharSet = ('a' .. 'z').toList() + ('0' .. '9').toList()
+    val passwordAlphaSet = 'a'..'z'
+    val passwordDigitSet = '0'..'9'
 
     print("New password: ")
-    for (i in 1 .. PASSWORD_LENGTH) {
-        print(passwordCharSet.random())
+    for (i in 1..PASSWORD_LENGTH) {
+        print(
+            (
+                if (i % 2 == 0)
+                    passwordAlphaSet
+                else
+                    passwordDigitSet
+            ).random()
+        )
     }
     println()
 
