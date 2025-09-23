@@ -1,5 +1,7 @@
 package lesson_7
 
+import kotlin.math.max
+
 /**
  * Задача 5* к Уроку 7
  *
@@ -14,17 +16,27 @@ fun main() {
     val passwordCapsAlphaSet = 'A'..'Z'
     val passwordStrokeAlphaSet = 'a'..'z'
     val passwordDigitSet = '0'..'9'
-    val passwordTotalCharSet =
-        passwordCapsAlphaSet.toList() + passwordStrokeAlphaSet.toList() + passwordDigitSet.toList()
 
+    val passwordCharSetList = listOf(
+        passwordCapsAlphaSet,
+        passwordStrokeAlphaSet,
+        passwordDigitSet,
+    )
+
+    val passwordTotalCharSet = mutableListOf<Char>()
+    passwordCharSetList.forEach {
+        passwordTotalCharSet += it.toList()
+    }
+
+    val minPasswordLength = max(passwordCharSetList.size, PASSWORD_MIN_LENGTH)
     var passwordLength: Int
 
     while (true) {
-        print("Задайте длину пароля (не менее $PASSWORD_MIN_LENGTH символов): ")
+        print("Задайте длину пароля (не менее $minPasswordLength символов): ")
         passwordLength = readln().toInt()
-        if (passwordLength >= PASSWORD_MIN_LENGTH)
+        if (passwordLength >= minPasswordLength)
             break
-        println("Длина пароля должна быть не менее $PASSWORD_MIN_LENGTH символов!")
+        println("Длина пароля должна быть не менее $minPasswordLength символов!")
     }
 
     val passwordCharList = mutableListOf<Char>(
@@ -36,7 +48,7 @@ fun main() {
     for (i in passwordCharList.size until passwordLength) {
         passwordCharList += passwordTotalCharSet.random()
     }
-    var password = passwordCharList.joinToString("") { it.toString() }
+    val password = passwordCharList.shuffled().joinToString("") { it.toString() }
 
     println("Ваш новый пароль: $password")
 
