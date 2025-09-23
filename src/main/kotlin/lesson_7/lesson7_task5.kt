@@ -11,22 +11,35 @@ package lesson_7
  */
 fun main() {
 
-    val passwordCharSet = ('a' .. 'z').toList() + ('0' .. '9').toList()
+    val passwordCapsAlphaSet = 'A'..'Z'
+    val passwordStrokeAlphaSet = 'a'..'z'
+    val passwordDigitSet = '0'..'9'
+    val passwordTotalCharSet =
+        passwordCapsAlphaSet.toList() + passwordStrokeAlphaSet.toList() + passwordDigitSet.toList()
 
     var passwordLength: Int
-    var password: String
 
     while (true) {
-        println("Задайте длительность работы таймера (в секундах):")
+        print("Задайте длину пароля (не менее $PASSWORD_MIN_LENGTH символов): ")
         passwordLength = readln().toInt()
-        if (passwordLength >= 6)
+        if (passwordLength >= PASSWORD_MIN_LENGTH)
             break
-        println("Длительность работы таймера должна быть положительным числом!")
+        println("Длина пароля должна быть не менее $PASSWORD_MIN_LENGTH символов!")
     }
 
-    for (tick in timerPeriodInSeconds downTo 1) {
-        println("Осталось секунд: $tick")
-        Thread.sleep(1000)
+    val passwordCharList = mutableListOf<Char>(
+        passwordCapsAlphaSet.random(),
+        passwordStrokeAlphaSet.random(),
+        passwordDigitSet.random(),
+    )
+
+    for (i in passwordCharList.size until passwordLength) {
+        passwordCharList += passwordTotalCharSet.random()
     }
+    var password = passwordCharList.joinToString("") { it.toString() }
+
+    println("Ваш новый пароль: $password")
 
 }
+
+const val PASSWORD_MIN_LENGTH = 6
