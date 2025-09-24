@@ -14,12 +14,10 @@ fun main() {
     print("Какой ингредиент надо найти: ")
     val wantedIngredient = readln()
 
-    for (i in ingredients) {
-        if (wantedIngredient == i) {
-            println("Ингредиент \"$i\" в рецепте есть")
-            return
-        }
-    }
-    println("Такого ингредиента в рецепте нет")
+    val index = ingredients.indexOf(wantedIngredient)
+    if (index >= 0)
+        println("Ингредиент \"${ingredients[index]}\" в рецепте есть")
+    else
+        println("Такого ингредиента в рецепте нет")
 
 }
