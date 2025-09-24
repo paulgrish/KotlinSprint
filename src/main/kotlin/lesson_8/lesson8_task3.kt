@@ -14,9 +14,8 @@ fun main() {
     print("Какой ингредиент надо найти: ")
     val wantedIngredient = readln()
 
-    val index = ingredients.indexOf(wantedIngredient)
-    if (index >= 0)
-        println("Ингредиент \"${ingredients[index]}\" в рецепте есть")
+    if (wantedIngredient in ingredients)
+        println("Ингредиент \"$wantedIngredient\" в рецепте есть")
     else
         println("Такого ингредиента в рецепте нет")
 
