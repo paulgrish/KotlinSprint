@@ -9,4 +9,24 @@ package lesson_8
  */
 fun main() {
 
+    val viewsPerDay = arrayOf(0, 0, 0, 0, 0, 0, 0)
+
+    println("Введите количество просмотров по дням")
+    for (i in viewsPerDay.indices) {
+        while (true) {
+            print("Просмотров за день ${i + 1}: ")
+            viewsPerDay[i] = readln().toInt()
+            if (viewsPerDay[i] >= 0)
+                break
+            println("Количество просмотров не может быть отрицательным!")
+        }
+    }
+
+    var viewsPerWeek = 0
+    for (views in viewsPerDay) {
+        viewsPerWeek += views
+    }
+
+    println("Просмотров за неделю: $viewsPerWeek")
+
 }
