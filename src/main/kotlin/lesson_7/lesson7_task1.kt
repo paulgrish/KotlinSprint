@@ -11,19 +11,18 @@ fun main() {
 
     val passwordAlphaSet = 'a'..'z'
     val passwordDigitSet = '0'..'9'
+    var password = ""
 
-    print("New password: ")
     for (i in 0 until PASSWORD_LENGTH) {
-        print(
-            (
+        password += (
                 if (i % 2 == 0)
                     passwordAlphaSet
                 else
                     passwordDigitSet
-            ).random()
-        )
+                ).random()
     }
-    println()
+
+    println("New password: $password")
 
 }
 
