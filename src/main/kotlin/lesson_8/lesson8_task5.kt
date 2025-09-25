@@ -13,23 +13,22 @@ package lesson_8
  */
 fun main() {
 
-    val ingredients = Array<String>(10) { "" }
+    var countOfIngredients: Int
 
-    println("Список ингредиентов:\n" +
-                ingredients.joinToString("\n- ", "- ", "\n")
-    )
-
-    print("Какой ингредиент надо заменить: ")
-    val wantedIngredient = readln()
-
-    if (wantedIngredient in ingredients) {
-        print("Какой ингредиент вместо \"$wantedIngredient\" надо добавить: ")
-        ingredients[ingredients.indexOf(wantedIngredient)] = readln()
-        println("Готово! Вы сохранили следующий список:\n" +
-                    ingredients.joinToString("\n- ", "- ", "\n")
-        )
-    } else {
-        println("Такого ингредиента в рецепте нет")
+    while (true) {
+        print("Введите количество ингредиентов в рецепте: ")
+        countOfIngredients = readln().toInt()
+        if (countOfIngredients > 0)
+            break
+        println("Количество ингредиентов должно быть положительным!")
     }
+
+    val ingredients = Array<String>(countOfIngredients) { "" }
+    for (i in ingredients.indices) {
+        print("Введите название ингредиента ${i + 1}: ")
+        ingredients[i] = readln()
+    }
+
+    println("Список ингредиентов: ${ingredients.joinToString(", ")}")
 
 }
