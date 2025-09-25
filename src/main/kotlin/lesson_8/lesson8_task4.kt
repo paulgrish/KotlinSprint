@@ -17,22 +17,21 @@ fun main() {
     // сырники)
     val ingredients = arrayOf("творог", "яйцо", "манка", "соль", "сахар", "сода", "мука", "ванилин")
 
-    println("Список ингредиентов:")
-    for (ingredient in ingredients) {
-        println("- $ingredient")
-    }
+    println("Список ингредиентов:\n" +
+                ingredients.joinToString("\n- ", "- ", "\n")
+    )
+
     print("Какой ингредиент надо заменить: ")
     val wantedIngredient = readln()
 
     if (wantedIngredient in ingredients) {
         print("Какой ингредиент вместо \"$wantedIngredient\" надо добавить: ")
         ingredients[ingredients.indexOf(wantedIngredient)] = readln()
-        println("Готово! Вы сохранили следующий список:")
-        for (ingredient in ingredients) {
-            println("- $ingredient")
-        }
-    }
-    else
+        println("Готово! Вы сохранили следующий список:\n" +
+                    ingredients.joinToString("\n- ", "- ", "\n")
+        )
+    } else {
         println("Такого ингредиента в рецепте нет")
+    }
 
 }
