@@ -24,6 +24,19 @@ fun main() {
         println("- $it")
     }
 
-    println("Желаете добавить еще?")
+    print("Желаете добавить еще один (да/нет)? ")
+    val answer = readln()
+    if (!answer.equals("да", true)) {
+        return
+    }
+
+    print("Какой ингредиент вы хотите добавить? ")
+    val newIngredient = readln()
+    ingredients += newIngredient
+
+    println("Теперь в рецепте есть следующие ингредиенты:")
+    ingredients.forEach {
+        println("- $it")
+    }
 
 }
