@@ -10,4 +10,12 @@ package lesson_9
  */
 fun main() {
 
+    // сырники)
+    val ingredients = listOf("творог", "яйцо", "манка", "соль", "сахар", "сода", "мука", "ванилин")
+
+    println("В рецепте есть следующие ингредиенты:")
+    ingredients.forEach {
+        println("- $it")
+    }
+
 }
