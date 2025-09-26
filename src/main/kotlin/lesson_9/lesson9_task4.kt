@@ -12,4 +12,20 @@ package lesson_9
  */
 fun main() {
 
+    println("Введите ровно $COUNT_OF_INGREDIENTS ингредиентов через запятую с пробелом:")
+    val ingredients = readln().split(", ").filter { it.length > 0 }
+
+    if (ingredients.size != COUNT_OF_INGREDIENTS) {
+        println("Надо было ввести ровно $COUNT_OF_INGREDIENTS ингредиентов (разделяя их запятой с пробелом).")
+        return
+    }
+
+    val sortedIngredients = ingredients.sorted()
+
+    println("Вы ввели следующие ингредиенты:")
+    sortedIngredients.forEach {
+        println("- $it")
+    }
 }
+
+const val COUNT_OF_INGREDIENTS = 5
