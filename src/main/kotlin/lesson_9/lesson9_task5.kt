@@ -11,15 +11,29 @@ package lesson_9
  */
 fun main() {
 
-    println("Введите ровно $COUNT_OF_INGREDIENTS ингредиентов через запятую с пробелом:")
-    val ingredients = readln().split(", ").filter { it.length > 0 }
+    val ingredients = MutableList<String>(INGREDIENTS_COUNT) { "" }
+    println("Введите ровно $INGREDIENTS_COUNT неповторяющихся ингредиентов в отдельных строках (через Enter):")
+    for (i in ingredients.indices) {
+        print("Ингредиент ${i + 1}: ")
+        ingredients[i] = readln()
+    }
 
-    if (ingredients.size != COUNT_OF_INGREDIENTS) {
-        println("Надо было ввести ровно $COUNT_OF_INGREDIENTS ингредиентов (разделяя их запятой с пробелом).")
+//    if (ingredients.size != INGREDIENTS_COUNT) {
+//        println("Надо было ввести ровно $INGREDIENTS_COUNT ингредиентов.")
+//        return
+//    }
+
+    val uniqueIngredients = ingredients.toSet()
+    if (uniqueIngredients.size != INGREDIENTS_COUNT) {
+        println("Ингредиенты не должны повторяться!")
         return
     }
 
-    val sortedIngredients = ingredients.sorted()
+    val sortedIngredients: MutableList<String> = ingredients.sorted().toMutableList()
+    var firstStringChars = sortedIngredients.first().toCharArray()
+//    firstStringChars.first() = firstStringChars.first().uppercase().first()
+    firstStringChars[0] = firstStringChars[0].uppercase().first()
+    sortedIngredients[0] = firstStringChars.toString()
 
     println("Вы ввели следующие ингредиенты:")
     sortedIngredients.forEach {
@@ -27,4 +41,4 @@ fun main() {
     }
 }
 
-const val COUNT_OF_INGREDIENTS = 5
+const val INGREDIENTS_COUNT = 5
