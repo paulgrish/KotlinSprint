@@ -18,11 +18,6 @@ fun main() {
         ingredients[i] = readln()
     }
 
-//    if (ingredients.size != INGREDIENTS_COUNT) {
-//        println("Надо было ввести ровно $INGREDIENTS_COUNT ингредиентов.")
-//        return
-//    }
-
     val uniqueIngredients = ingredients.toSet()
     if (uniqueIngredients.size != INGREDIENTS_COUNT) {
         println("Ингредиенты не должны повторяться!")
@@ -31,16 +26,10 @@ fun main() {
 
     val sortedIngredients: MutableList<String> = ingredients.sorted().toMutableList()
     val firstString = sortedIngredients.first()
-    val newFirstString = firstString.first().uppercase() + firstString.substring(1 until firstString.length)
-//    firstStringChars.first() = firstStringChars.first().uppercase().first()
-//    firstStringChars[0] = firstStringChars[0].uppercase().first()
-//    sortedIngredients[0] = firstStringChars.toString()
-    sortedIngredients[0] = newFirstString
+    sortedIngredients[0] = firstString.first().uppercase() + firstString.substring(1 until firstString.length)
 
-    println("Вы ввели следующие ингредиенты:")
-    sortedIngredients.forEach {
-        println("- $it")
-    }
+    println("Вы ввели следующие ингредиенты: " + sortedIngredients.joinToString(", "))
+
 }
 
 const val INGREDIENTS_COUNT = 5
