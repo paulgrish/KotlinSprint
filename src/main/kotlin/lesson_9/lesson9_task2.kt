@@ -32,7 +32,7 @@ fun main() {
 
     print("Какой ингредиент вы хотите добавить? ")
     val newIngredient = readln()
-    ingredients += newIngredient
+    ingredients.add(newIngredient)
 
     println("Теперь в рецепте есть следующие ингредиенты:")
     ingredients.forEach {
