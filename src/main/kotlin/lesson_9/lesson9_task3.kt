@@ -14,7 +14,7 @@ package lesson_9
 fun main() {
 
     val ingredients = listOf("яйцо", "молоко", "сливочное масло")
-    val amounts = mutableListOf(2, 50, 15)
+    val amounts = listOf(2, 50, 15)
 
     var portions: Int
     while (true) {
@@ -25,14 +25,13 @@ fun main() {
         println("Количество порций должно быть положительным числом!")
     }
 
-//    amounts.forEach { it = it * portions }
-    for (i in amounts.indices) { amounts[i] = amounts[i] * portions }
+    val neededAmounts = amounts.map { it * portions }
 
     print("На $portions порций вам понадобится:")
     for (i in ingredients.indices) {
         if (i > 0)
             print(",")
-        print(" ${ingredients[i]} - ${amounts[i]}")
+        print(" ${ingredients[i]} - ${neededAmounts[i]}")
     }
     println()
 
