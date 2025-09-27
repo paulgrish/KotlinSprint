@@ -30,10 +30,12 @@ fun main() {
     }
 
     val sortedIngredients: MutableList<String> = ingredients.sorted().toMutableList()
-    var firstStringChars = sortedIngredients.first().toCharArray()
+    val firstString = sortedIngredients.first()
+    val newFirstString = firstString.first().uppercase() + firstString.substring(1 until firstString.length)
 //    firstStringChars.first() = firstStringChars.first().uppercase().first()
-    firstStringChars[0] = firstStringChars[0].uppercase().first()
-    sortedIngredients[0] = firstStringChars.toString()
+//    firstStringChars[0] = firstStringChars[0].uppercase().first()
+//    sortedIngredients[0] = firstStringChars.toString()
+    sortedIngredients[0] = newFirstString
 
     println("Вы ввели следующие ингредиенты:")
     sortedIngredients.forEach {
