@@ -11,4 +11,18 @@ package lesson_10
  */
 fun main() {
 
+    println("Для регистрации в приложении введите логин и пароль длиной не менее $MIN_LOGIN_PASSWORD_LENGTH символов каждый.")
+    println("Логин: ")
+    val userlogin = readln()
+    println("Пароль: ")
+    val userPassword = readln()
+
+    if (!checkLoginPasswordLength(userlogin) || !checkLoginPasswordLength(userPassword)) {
+        println("Логин или пароль недостаточно длинные.")
+    }
+
 }
+
+const val MIN_LOGIN_PASSWORD_LENGTH = 4
+
+fun checkLoginPasswordLength(text: String) = text.length >= MIN_LOGIN_PASSWORD_LENGTH
