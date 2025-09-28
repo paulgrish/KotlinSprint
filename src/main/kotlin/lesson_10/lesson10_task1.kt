@@ -13,4 +13,22 @@ package lesson_10
  */
 fun main() {
 
+    println("Игра в кости.")
+
+    val userNumber = diceHit()
+    println("Человек бросил кость, результат $userNumber")
+    val computerNumber = diceHit()
+    println("Компьютер бросил кость, результат $computerNumber")
+
+    val resultText = when {
+        userNumber > computerNumber -> "Победило человечество"
+        userNumber < computerNumber -> "Победила машина"
+        else -> "Победила дружба"
+    }
+    println(resultText)
+
 }
+
+const val MAX_DICE_NUMBER = 6
+
+fun diceHit() = (1 .. MAX_DICE_NUMBER).random()
