@@ -14,4 +14,66 @@ package lesson_10
  */
 fun main() {
 
+    println("Игра в кости.")
+
+    var roundCount = 0
+    var userWins = 0
+    var proceed = false
+
+    do {
+        if (diceRound(++roundCount)) {
+            userWins++
+        }
+
+        while (true) {
+            print("Хотите бросить кости еще раз? Введите Да или Нет: ")
+            val userAnswer = readln().lowercase()
+
+            when (userAnswer) {
+                "да" -> {
+                    proceed = true
+                    break
+                }
+                "нет" -> {
+                    proceed = false
+                    break
+                }
+                else -> {
+                    println("Вводите только Да или Нет!")
+                }
+            }
+        }
+    } while (proceed)
+
+    println("Человек выиграл раундов: $userWins из $roundCount.")
+
 }
+
+const val MAX_DICE_10_4_NUMBER = 6
+
+/**
+ * Реализует один раунд игры в кости между человеком и компьютером.
+ * Возвращает true, если победил человек, иначе false (ничья или человек проиграл).
+ */
+fun diceRound(number: Int): Boolean {
+
+    println("\nРаунд $number.")
+    val userNumber = diceHit()
+    println("Человек бросил кость, результат: $userNumber")
+    val computerNumber = diceHit()
+    println("Компьютер бросил кость, результат: $computerNumber")
+
+    val result = when {
+        userNumber > computerNumber -> "Победило человечество" to true
+        userNumber < computerNumber -> "Победила машина" to false
+        else -> "Победила дружба" to false
+    }
+    println(result.first)
+
+    return result.second
+}
+
+/**
+ * Генерирует число, выпавшее на игральной кости.
+ */
+fun diceHit() = (1..MAX_DICE_10_4_NUMBER).random()
