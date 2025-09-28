@@ -18,38 +18,36 @@ fun main() {
 
     var roundCount = 0
     var userWins = 0
-    var proceed = false
 
     do {
         if (diceRound(++roundCount)) {
             userWins++
         }
-
-        while (true) {
-            print("Хотите бросить кости еще раз? Введите Да или Нет: ")
-            val userAnswer = readln().lowercase()
-
-            when (userAnswer) {
-                "да" -> {
-                    proceed = true
-                    break
-                }
-                "нет" -> {
-                    proceed = false
-                    break
-                }
-                else -> {
-                    println("Вводите только Да или Нет!")
-                }
-            }
-        }
-    } while (proceed)
+    } while (needProceedGame())
 
     println("Человек выиграл раундов: $userWins из $roundCount.")
 
 }
 
 const val MAX_DICE_10_4_NUMBER = 6
+
+/**
+ * Обработка запроса пользователю о продолжении игры.
+ * Возвращает true, если игру надо продолжить, иначе false.
+ */
+fun needProceedGame(): Boolean {
+
+    while (true) {
+        print("Хотите бросить кости еще раз? Введите Да или Нет: ")
+        val userAnswer = readln().lowercase()
+
+        when (userAnswer) {
+            "да" -> return true
+            "нет" -> return false
+            else -> println("Вводите только Да или Нет!")
+        }
+    }
+}
 
 /**
  * Реализует один раунд игры в кости между человеком и компьютером.
