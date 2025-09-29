@@ -1,5 +1,8 @@
 package lesson_10
 
+import lesson_5.REGISTERED_USER_LOGIN
+import lesson_5.REGISTERED_USER_PASSWORD
+
 /**
  * Задача 5* к Уроку 10
  *
@@ -17,4 +20,65 @@ package lesson_10
  */
 fun main() {
 
+    println("Введите данные для авторизации в нашем интернет-магазине.")
+    print("Логин: ")
+    val userLogin = readln()
+    print("Пароль: ")
+    val userPassword = readln()
+
+    val autorizationResult = autorizeUser(userLogin, userPassword)
+
+    if (autorizationResult == null) {
+        println("Попытка авторизации неудачна.")
+    }
+    else {
+        val basket = getBasketByToken(autorizationResult)
+        println("Содержимое вашей корзины:")
+        basket.forEachIndexed { i, it ->
+            println("$i: ${it.first} x ${it.second}")
+        }
+    }
+
+}
+
+const val REGISTERED_USER_LOGIN = "paulgri"
+const val REGISTERED_USER_PASSWORD = "abc123"
+const val TOKEN_LENGTH = 32
+
+const val MIN_BASKET_SIZE = 3
+const val MAX_BASKET_SIZE = 12
+const val MIN_POSITION_COUNT = 1
+const val MAX_POSITION_COUNT = 6
+
+fun autorizeUser(userLogin: String, userPassword: String): String? {
+
+    return if (userLogin == REGISTERED_USER_LOGIN && userPassword == REGISTERED_USER_PASSWORD)
+        makeTokenFor(userLogin, userPassword)
+    else
+        null
+
+}
+
+fun makeTokenFor(userLogin: String, userPassword: String): String {
+
+    // TODO: generate real unique jwt for each user
+
+    val tokenCharSet = ('a'..'z').toList() + ('A'..'Z').toList() + ('0'..'9').toList()
+    var token = ""
+
+    (1..TOKEN_LENGTH).forEach { token += tokenCharSet.random() }
+
+    return token
+
+}
+
+fun getBasketByToken(token: String): List<Pair<String, Int>> {
+
+    // TODO: get real basket by token from DB
+
+    val positionNames = listOf("milk", "bread", "beer", "cheeze", "coffee", "sugar", "salt", "chips", "yogurt",
+        "flakes", "eggs", "ketchup", "orange", "apple", "cup", "plate", "spoon", "notebook", "pen")
+
+    return positionNames.shuffled().take((MIN_BASKET_SIZE..MAX_BASKET_SIZE).random()).
+        map { it to (MIN_POSITION_COUNT..MAX_POSITION_COUNT).random() }
 }
