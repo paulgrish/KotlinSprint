@@ -1,8 +1,5 @@
 package lesson_10
 
-import lesson_5.REGISTERED_USER_LOGIN
-import lesson_5.REGISTERED_USER_PASSWORD
-
 /**
  * Задача 5* к Уроку 10
  *
@@ -80,5 +77,6 @@ fun getBasketByToken(token: String): List<Pair<String, Int>> {
         "flakes", "eggs", "ketchup", "orange", "apple", "cup", "plate", "spoon", "notebook", "pen")
 
     return positionNames.shuffled().take((MIN_BASKET_SIZE..MAX_BASKET_SIZE).random()).
-        map { it to (MIN_POSITION_COUNT..MAX_POSITION_COUNT).random() }
+        sorted().map { it to (MIN_POSITION_COUNT..MAX_POSITION_COUNT).random() }
+
 }
