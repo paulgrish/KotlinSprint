@@ -28,7 +28,7 @@ fun main() {
 
 }
 
-val registeredUserId = MutableList<Long>(0) { 0L }
+val registeredUserId = MutableList(0) { 0L }
 
 fun getUniqueId(): Long {
 
@@ -37,6 +37,7 @@ fun getUniqueId(): Long {
     do {
         id = (0..Long.MAX_VALUE).random()
     } while (id in registeredUserId)
+    registeredUserId.add(id)
 
     return id
 
