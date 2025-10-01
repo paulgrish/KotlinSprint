@@ -14,6 +14,30 @@ class UserCredentials(
     val email: String,
 ) {
     fun printFullInfo() {
-
+        println("id: $id, login: $login, password: $password, e-mail: $email")
     }
+}
+
+fun main() {
+
+    val userA = UserCredentials(getUniqueId(), "tom", "milk", "tom@disney.com")
+    val userB = UserCredentials(getUniqueId(), "jerry", "cheese", "jerry@disney.com")
+
+    userA.printFullInfo()
+    userB.printFullInfo()
+
+}
+
+val registeredUserId = MutableList<Long>(0) { 0L }
+
+fun getUniqueId(): Long {
+
+    var id: Long
+
+    do {
+        id = (0..Long.MAX_VALUE).random()
+    } while (id in registeredUserId)
+
+    return id
+
 }
