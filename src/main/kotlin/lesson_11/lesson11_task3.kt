@@ -24,7 +24,7 @@ class ChatRoom(
     val cover: Int,
     val caption: String,
 ) {
-    val users: MutableList<ChatUser> = mutableListOf()
+    val users: MutableList<ChatUser> = mutableListOf<ChatUser>()
 
     fun addUser(user: ChatUser) {
         if (users.none { it.nickname == user.nickname }) {
@@ -32,14 +32,16 @@ class ChatRoom(
         }
     }
 
-    fun updateUserStatus(userNickname: String, statusLevel: Int) {
-        users.takeIf { it.nickname == userNickname }.also {
-            when (it.statusLevel) {
-                2 -> it.
-            }
+    fun updateUserStatus(userNickname: String, statusLevel: String) {
+        users.find { it.nickname == userNickname }.also {
+                it.status = statusLevel
         }
     }
 }
+
+const val USER_STATUS_TALK = "разговаривает"
+const val USER_STATUS_SILENT = "микрофон выключен"
+const val USER_STATUS_DISABLE = "пользователь заглушен"
 
 class ChatUser(
     val avatarId: Int,
@@ -76,20 +78,4 @@ class ChatUser(
 
         return true
     }
-}
-
-
-val registeredUserId = MutableList(0) { 0L }
-
-fun getUniqueId(): Long {
-
-    var id: Long
-
-    do {
-        id = (0..Long.MAX_VALUE).random()
-    } while (id in registeredUserId)
-    registeredUserId.add(id)
-
-    return id
-
 }
