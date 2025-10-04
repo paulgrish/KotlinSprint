@@ -18,6 +18,7 @@ fun main() {
 class Category(
     val coverId: Int,
     val caption: String,
+    val description: String
 ) {
     val recipeList = mutableListOf<Recipe>()
 }
@@ -28,9 +29,13 @@ class Recipe(
     var inFavorites: Boolean = false,
 ) {
     val ingredientList = mutableListOf<Ingredient>()
-
+    var prepareStages = mutableListOf<String>()
 }
 
-class Ingredient {
+class Ingredient(
+    val name: String,
+    val amount: Float,
+    val measureItem: String,
+) {
 
 }
