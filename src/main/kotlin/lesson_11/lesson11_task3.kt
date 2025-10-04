@@ -20,6 +20,33 @@ package lesson_11.task_3
  *
  * После проектирования создай объект комнаты с произвольными данными.
  */
+fun main() {
+
+    val room = ChatRoom(28, "Disney room")
+
+    room.printRoomCard()
+
+    println()
+
+    room.addUser(ChatUser(1, "Tom"))
+    room.addUser(ChatUser(2, "Jerry"))
+    room.addUser(ChatUser(3, "Walt", USER_STATUS_TALK))
+    room.addUser(ChatUser(4, "Spike"))
+
+    room.printRoomCard()
+
+    println()
+
+    room.updateUserStatus("Jerry", USER_STATUS_DISABLED)
+    room.updateUserStatus("Cat", USER_STATUS_TALK)
+
+    room.longPress(0)
+    room.longPress(1)
+    room.longPress(2)
+    room.longPress(3)
+
+}
+
 class ChatRoom(
     val cover: Int,
     val caption: String,
@@ -33,49 +60,41 @@ class ChatRoom(
     }
 
     fun updateUserStatus(userNickname: String, statusLevel: String) {
-        users.find { it.nickname == userNickname }.also {
-                it.status = statusLevel
+        users.find { it.nickname == userNickname }?.also {
+            it.status = statusLevel
         }
+    }
+
+    fun printRoomCard() {
+        println("[Cover $cover] $caption")
+        if (users.size > 0) {
+            users.forEach { it.printShortInfo() }
+        } else {
+            println("[в комнате никого нет]")
+        }
+    }
+
+    fun longPress(itemIndex: Int) {
+        users[itemIndex].printFullInfo()
     }
 }
 
 const val USER_STATUS_TALK = "разговаривает"
 const val USER_STATUS_SILENT = "микрофон выключен"
-const val USER_STATUS_DISABLE = "пользователь заглушен"
+const val USER_STATUS_DISABLED = "пользователь заглушен"
 
 class ChatUser(
     val avatarId: Int,
     val nickname: String,
-    var status: String,
+    var status: String = USER_STATUS_SILENT,
 ) {
 
+    fun printShortInfo() {
+        println("[Avatar ${avatarId}]")
+    }
+
     fun printFullInfo() {
-        println("id: $id, login: $login, password: $password, e-mail: $email${if (bio.length > 0) ", bio: $bio" else ""}")
+        println("[Avatar ${avatarId}] $nickname - $status")
     }
 
-    fun setBioFromConsole() {
-        println("Enter additional info for user \'$login\' (id: $id):")
-        bio = readln()
-    }
-
-    /**
-     * return true if password changed successfully, else false
-     */
-    fun changePassword(): Boolean {
-
-        println("You request for change password for user \'$login\' (id: $id).")
-
-        print("Please, enter current password: ")
-        val currentPassword = readln()
-        if (currentPassword != password) {
-            println("Current password is incorrect!")
-            return false
-        }
-
-        print("Please, enter new password: ")
-        password = readln()
-        println("Password for user \'$login\' (id: $id) changed successfully.")
-
-        return true
-    }
 }
