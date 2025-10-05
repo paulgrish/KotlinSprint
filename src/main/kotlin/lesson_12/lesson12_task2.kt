@@ -11,4 +11,20 @@ package lesson_12
  */
 fun main() {
 
+    val day1 = DailyWeather2(5.2f, -1.7f, true)
+
+    day1.printInfo()
+
+}
+
+class DailyWeather2(
+    var dayCelsiusTemperature: Float,
+    var nightCelsiusTemperature: Float,
+    var dailyPrecipitation: Boolean,
+) {
+    fun printInfo() {
+        println("Температура днем %+.1f°C, ночью %+.1f°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
+                if (dailyPrecipitation) "осадки" else "без осадков"
+        )
+    }
 }
