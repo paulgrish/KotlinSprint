@@ -19,7 +19,16 @@ package lesson_12
  */
 fun main() {
 
-    val day1 = DailyWeatherData(295, 289, true)
+    val monthWeatherData = List(DAYS_IN_MONTH) {
+        DailyWeatherData(
+            (DAY_TEMPERATURE_LOW .. DAY_TEMPERATURE_HI).random(),
+            (NIGHT_TEMPERATURE_LOW .. NIGHT_TEMPERATURE_HI).random(),
+            (1 .. DAILY_PRECIPITATION_MAX).random() <= DAILY_PRECIPITATION_PERCENT
+        )
+    }
+
+//    monthWeatherData.forEach { it.printInfo() }
+
 
 }
 
@@ -32,10 +41,6 @@ class DailyWeatherData(
     val nightCelsiusTemperature: Int = nightKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
     val dailyPrecipitation: Boolean = _dailyPrecipitation
 
-    init {
-        printInfo()
-    }
-
     fun printInfo() {
         println("Температура днем %+d°C, ночью %+d°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
                 if (dailyPrecipitation) "осадки" else "без осадков"
@@ -44,3 +49,18 @@ class DailyWeatherData(
 }
 
 const val CELSIUS_ZERO_IN_KELVIN = 273
+
+const val DAYS_IN_MONTH = 30
+
+const val DAY_TEMPERATURE_BASE = 295
+const val DAY_TEMPERATURE_VARIATION = 5
+const val NIGHT_TEMPERATURE_DIFFERENCE = 9
+const val NIGHT_TEMPERATURE_BASE = DAY_TEMPERATURE_BASE - NIGHT_TEMPERATURE_DIFFERENCE
+const val NIGHT_TEMPERATURE_VARIATION = 7
+const val DAILY_PRECIPITATION_MAX = 100
+
+const val DAY_TEMPERATURE_HI = DAY_TEMPERATURE_BASE + DAY_TEMPERATURE_VARIATION
+const val DAY_TEMPERATURE_LOW = DAY_TEMPERATURE_BASE - DAY_TEMPERATURE_VARIATION
+const val NIGHT_TEMPERATURE_HI = NIGHT_TEMPERATURE_BASE + NIGHT_TEMPERATURE_VARIATION
+const val NIGHT_TEMPERATURE_LOW = NIGHT_TEMPERATURE_BASE - NIGHT_TEMPERATURE_VARIATION
+const val DAILY_PRECIPITATION_PERCENT = 68
