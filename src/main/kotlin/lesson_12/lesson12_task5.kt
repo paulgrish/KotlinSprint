@@ -27,8 +27,17 @@ fun main() {
         )
     }
 
-//    monthWeatherData.forEach { it.printInfo() }
+    val dayTemperatureSet = monthWeatherData.map { it.dayCelsiusTemperature }
+    val nightTemperatureSet = monthWeatherData.map { it.nightCelsiusTemperature }
+    val dailyPrecipitationSet = monthWeatherData.map { it.dailyPrecipitation }
 
+    val dayTemperatureAverage = dayTemperatureSet.average()
+    val nightTemperatureAverage = nightTemperatureSet.average()
+    val percipitationDaysCount = dailyPrecipitationSet.filter { it }.size
+
+    println("Средняя дневная температура за $DAYS_IN_MONTH дней: %+.1f°C".format(dayTemperatureAverage))
+    println("Средняя ночная температура за $DAYS_IN_MONTH дней: %+.1f°C".format(nightTemperatureAverage))
+    println("Количество дней с осадками за $DAYS_IN_MONTH дней: $percipitationDaysCount")
 
 }
 
