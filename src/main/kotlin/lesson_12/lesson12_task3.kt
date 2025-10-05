@@ -26,9 +26,9 @@ class DailyWeather3(
     nightKelvinTemperature: Int,
     _dailyPrecipitation: Boolean,
 ) {
-    var dayCelsiusTemperature: Int = dayKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
-    var nightCelsiusTemperature: Int = nightKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
-    var dailyPrecipitation: Boolean = _dailyPrecipitation
+    val dayCelsiusTemperature: Int = dayKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
+    val nightCelsiusTemperature: Int = nightKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
+    val dailyPrecipitation: Boolean = _dailyPrecipitation
 
     fun printInfo() {
         println("Температура днем %+d°C, ночью %+d°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
