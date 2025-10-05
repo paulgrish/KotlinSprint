@@ -10,21 +10,18 @@ package lesson_12
  * Cоздай объект с произвольными данными и выведи в консоль методом созданного класса.
  */
 fun main() {
-
-    val day1 = DailyWeather2(5.2f, -1.7f, true)
-
+    val day1 = DailyWeather2(dayCelsiusTemperature = 5.2f, nightCelsiusTemperature = -1.7f, hasDayPrecipitation = true)
     day1.printInfo()
-
 }
 
 class DailyWeather2(
     val dayCelsiusTemperature: Float,
     val nightCelsiusTemperature: Float,
-    val dailyPrecipitation: Boolean,
+    val hasDayPrecipitation: Boolean,
 ) {
     fun printInfo() {
         println("Температура днем %+.1f°C, ночью %+.1f°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
-                if (dailyPrecipitation) "осадки" else "без осадков"
+                if (hasDayPrecipitation) "осадки" else "без осадков"
         )
     }
 }
