@@ -21,15 +21,15 @@ fun main() {
 
     val monthWeatherData = List(DAYS_IN_MONTH) {
         DailyWeatherData(
-            (DAY_TEMPERATURE_LOW .. DAY_TEMPERATURE_HI).random(),
-            (NIGHT_TEMPERATURE_LOW .. NIGHT_TEMPERATURE_HI).random(),
-            (1 .. DAILY_PRECIPITATION_MAX).random() <= DAILY_PRECIPITATION_PERCENT
+            dayKelvinTemperature = (DAY_TEMPERATURE_LOW .. DAY_TEMPERATURE_HI).random(),
+            nightKelvinTemperature = (NIGHT_TEMPERATURE_LOW .. NIGHT_TEMPERATURE_HI).random(),
+            _hasDayPrecipitation = (1 .. DAILY_PRECIPITATION_MAX).random() <= DAILY_PRECIPITATION_PERCENT
         )
     }
 
     val dayTemperatureSet = monthWeatherData.map { it.dayCelsiusTemperature }
     val nightTemperatureSet = monthWeatherData.map { it.nightCelsiusTemperature }
-    val dailyPrecipitationSet = monthWeatherData.map { it.dailyPrecipitation }
+    val dailyPrecipitationSet = monthWeatherData.map { it.hasDayPrecipitation }
 
     val dayTemperatureAverage = dayTemperatureSet.average()
     val nightTemperatureAverage = nightTemperatureSet.average()
@@ -44,15 +44,15 @@ fun main() {
 class DailyWeatherData(
     dayKelvinTemperature: Int,
     nightKelvinTemperature: Int,
-    _dailyPrecipitation: Boolean,
+    _hasDayPrecipitation: Boolean,
 ) {
     val dayCelsiusTemperature: Int = dayKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
     val nightCelsiusTemperature: Int = nightKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
-    val dailyPrecipitation: Boolean = _dailyPrecipitation
+    val hasDayPrecipitation: Boolean = _hasDayPrecipitation
 
     fun printInfo() {
         println("Температура днем %+d°C, ночью %+d°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
-                if (dailyPrecipitation) "осадки" else "без осадков"
+                if (hasDayPrecipitation) "осадки" else "без осадков"
         )
     }
 }
