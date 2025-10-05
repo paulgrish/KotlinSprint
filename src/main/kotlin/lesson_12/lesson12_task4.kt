@@ -9,8 +9,6 @@ fun main() {
 
     val day1 = DailyWeather4(295, 289, true)
 
-    day1.printInfo()
-
 }
 
 class DailyWeather4(
@@ -21,6 +19,10 @@ class DailyWeather4(
     val dayCelsiusTemperature: Int = dayKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
     val nightCelsiusTemperature: Int = nightKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
     val dailyPrecipitation: Boolean = _dailyPrecipitation
+
+    init {
+        printInfo()
+    }
 
     fun printInfo() {
         println("Температура днем %+d°C, ночью %+d°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
