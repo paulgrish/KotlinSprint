@@ -18,9 +18,9 @@ fun main() {
 }
 
 class DailyWeather2(
-    var dayCelsiusTemperature: Float,
-    var nightCelsiusTemperature: Float,
-    var dailyPrecipitation: Boolean,
+    val dayCelsiusTemperature: Float,
+    val nightCelsiusTemperature: Float,
+    val dailyPrecipitation: Boolean,
 ) {
     fun printInfo() {
         println("Температура днем %+.1f°C, ночью %+.1f°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
