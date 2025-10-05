@@ -15,20 +15,26 @@ package lesson_12
  */
 fun main() {
 
-    val day1 = DailyWeather3(5.2f, -1.7f, true)
+    val day1 = DailyWeather3(295, 289, true)
 
     day1.printInfo()
 
 }
 
 class DailyWeather3(
-    var dayCelsiusTemperature: Float,
-    var nightCelsiusTemperature: Float,
-    var dailyPrecipitation: Boolean,
+    dayKelvinTemperature: Int,
+    nightKelvinTemperature: Int,
+    _dailyPrecipitation: Boolean,
 ) {
+    var dayCelsiusTemperature: Int = dayKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
+    var nightCelsiusTemperature: Int = nightKelvinTemperature - CELSIUS_ZERO_IN_KELVIN
+    var dailyPrecipitation: Boolean = _dailyPrecipitation
+
     fun printInfo() {
-        println("Температура днем %+.1f°C, ночью %+.1f°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
+        println("Температура днем %+d°C, ночью %+d°C, ".format(dayCelsiusTemperature, nightCelsiusTemperature) +
                 if (dailyPrecipitation) "осадки" else "без осадков"
         )
     }
 }
+
+const val CELSIUS_ZERO_IN_KELVIN = 273
