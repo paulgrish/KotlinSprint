@@ -38,7 +38,7 @@ class Contact2(
     val company: String? = null,
 ) {
     fun print() {
-        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: "<не указано>"}")
+        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: "$NULL_COMPANY_VALUE"}")
     }
 }
 
