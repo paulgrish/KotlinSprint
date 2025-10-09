@@ -1,4 +1,4 @@
-package lesson_12
+package lesson_12.tasl_5
 
 import kotlin.random.Random
 

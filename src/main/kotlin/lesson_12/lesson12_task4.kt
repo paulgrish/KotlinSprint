@@ -1,4 +1,4 @@
-package lesson_12
+package lesson_12.task_4
 
 /**
  * Задача 4 к Уроку 12
