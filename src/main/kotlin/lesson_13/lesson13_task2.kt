@@ -14,12 +14,33 @@ package lesson_13
  */
 fun main() {
 
+    println("Введите данные контакта:")
+    print("- Имя: ")
+    val name = readln()
+    print("- Номер: ")
+    val phone = readln().toLong()
+    print("- Компания (пустая строка или \"$NULL_COMPANY_VALUE\", если не задано): ")
+    val company = readln()
+
+    val contact = Contact2(
+        name,
+        phone,
+        if (company != NULL_COMPANY_VALUE && company != EMPTY_COMPANY_VALUE) company else null
+    )
+
+    println("Информация о контакте:")
+    contact.print()
 }
 
-class Contact(
+class Contact2(
     val name: String,
     val phone: Long,
-    val company: String?,
+    val company: String? = null,
 ) {
-
+    fun print() {
+        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: "<не указано>"}")
+    }
 }
+
+const val NULL_COMPANY_VALUE = "<не указано>"
+const val EMPTY_COMPANY_VALUE = ""
