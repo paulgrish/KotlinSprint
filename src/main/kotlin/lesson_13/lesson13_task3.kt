@@ -1,4 +1,4 @@
-package lesson_13
+package lesson_13.task3
 
 /**
  * Задача 3 к Уроку 13
@@ -14,6 +14,18 @@ package lesson_13
  */
 fun main() {
 
+    val contactList = listOf(
+        Contact3("Tom", 9876543210L, "Disney"),
+        Contact3("Jerry", 9876543012L, "Disney"),
+        Contact3("Spike", 9012345678L, "null"),
+        Contact3("paul", 9222535881L),
+        Contact3("gri", 9222770770L),
+    )
+
+    contactList.forEachIndexed { i, it ->
+        println("Контакт ${i + 1}:")
+        it.print()
+    }
 }
 
 class Contact3(
@@ -27,4 +39,3 @@ class Contact3(
 }
 
 const val NULL_COMPANY_VALUE = "<не указано>"
-const val EMPTY_COMPANY_VALUE = ""
