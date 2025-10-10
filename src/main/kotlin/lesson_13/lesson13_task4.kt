@@ -14,13 +14,8 @@ package lesson_13.task4
  */
 fun main() {
 
-    val contactList = listOf(
-        Contact4("Tom", 9876543210L, "Disney"),
-        Contact4("Jerry", 9876543012L, "Disney"),
-        Contact4("Spike", 9012345678L, "null"),
-        Contact4("paul", 9222535881L),
-        Contact4("gri", 9222770770L),
-    )
+    val contactList = mutableListOf<Contact4>()
+    var answer: String
 
     contactList.forEachIndexed { i, it ->
         println("Контакт ${i + 1}:")
