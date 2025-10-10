@@ -16,20 +16,20 @@ fun main() {
 
     println("Введите данные контакта:")
     print("- Имя: ")
-    val name = readln()
+    val name = readln().trim()
     print("- Номер: ")
-    val phone = readln().toLong()
-    print("- Компания (пустая строка или \"$NULL_COMPANY_VALUE\", если не задано): ")
-    val company = readln()
+    val phone = readln().trim().toLong()
+    print("- Компания (пустая строка, если не задано): ")
+    val company = readln().trim()
 
     val contact = Contact2(
         name,
         phone,
-        if (company != NULL_COMPANY_VALUE && company != EMPTY_COMPANY_VALUE) company else null
+        if (company.isBlank()) null else company
     )
 
     println("Информация о контакте:")
-    contact.print()
+    contact.printContactInfo()
 }
 
 class Contact2(
@@ -37,10 +37,9 @@ class Contact2(
     val phone: Long,
     val company: String? = null,
 ) {
-    fun print() {
-        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: "$NULL_COMPANY_VALUE"}")
+    fun printContactInfo() {
+        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: NULL_COMPANY_TEXT}")
     }
 }
 
-const val NULL_COMPANY_VALUE = "<не указано>"
-const val EMPTY_COMPANY_VALUE = ""
+const val NULL_COMPANY_TEXT = "<не указано>"
