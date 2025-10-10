@@ -12,67 +12,35 @@ package lesson_13.task5
  */
 fun main() {
 
-    val contactList = mutableListOf<Contact4>()
-    var name: String
-    var phone: Long?
-    var company: String?
-    var answer: String
-    var proceed = true
 
-    while (proceed) {
+    println("Введите данные контакта:")
+    print("- Имя: ")
+    val name = readln().trim()
+    print("- Номер (только цифры): ")
+    val phoneStr = readln().trim()
+    print("- Компания (пустая строка, если не задано): ")
+    val company = readln().trim()
+    var phone: Long
 
-        println("Введите данные контакта:")
-        print("- Имя: ")
-        name = readln().trim()
-        print("- Номер (только цифры): ")
-        phone = readln().trim().toLongOrNull()
-        print("- Компания (пустая строка, если не задано): ")
-        company = readln().trim()
-
-        if (phone != null && !name.isBlank()) {
-            contactList.add(
-                Contact4(
-                    name,
-                    phone,
-                    if (company.isBlank()) null else company
-                )
-            )
-            println("Запись успешно добавлена.")
-        } else {
-            println("Запись должна содержать имя и корректный номер телефона!")
-        }
-
-        while (true) {
-            println("Добавить еще одну запись? (да/нет)")
-            answer = readln().trim().lowercase()
-            when (answer) {
-                "да" -> {
-                    break
-                }
-                "нет" -> {
-                    proceed = false
-                    break
-                }
-                else -> {
-                    println("Введите только \"да\" или \"нет\"")
-                }
-            }
-        }
+    try {
+        phone = phoneStr.toLong()
+    } catch (e: Exception) {
+        println("Номер введен неправильно, ошибка \"${e.message}\"")
+        return
     }
 
-    println("Список контактов:")
-    if (contactList.isNotEmpty()) {
-        contactList.forEachIndexed { i, it ->
-            println("Контакт ${i + 1}:")
-            it.printContactInfo()
-        }
-    } else {
-        println("<пусто>")
-    }
+    val contact = Contact5(
+        name,
+        phone,
+        if (company.isBlank()) null else company
+    )
+
+    println("Введен контакт:")
+    contact.printContactInfo()
 
 }
 
-class Contact4(
+class Contact5(
     val name: String,
     val phone: Long,
     val company: String? = null,
