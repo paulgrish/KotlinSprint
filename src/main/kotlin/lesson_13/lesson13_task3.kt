@@ -22,10 +22,9 @@ fun main() {
         Contact3("gri", 9222770770L),
     )
 
-    contactList.forEachIndexed { i, it ->
-        println("Контакт ${i + 1}:")
-        it.print()
-    }
+    println("Список компаний:")
+    contactList.mapNotNull { it.company }.toSet().forEach { println(it) }
+
 }
 
 class Contact3(
@@ -33,9 +32,9 @@ class Contact3(
     val phone: Long,
     val company: String? = null,
 ) {
-    fun print() {
-        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: "$NULL_COMPANY_VALUE"}")
+    fun printContactInfo() {
+        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: NULL_COMPANY_TEXT}")
     }
 }
 
-const val NULL_COMPANY_VALUE = "<не указано>"
+const val NULL_COMPANY_TEXT = "<не указано>"
