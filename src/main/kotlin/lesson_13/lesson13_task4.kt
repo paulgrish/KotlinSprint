@@ -15,12 +15,63 @@ package lesson_13.task4
 fun main() {
 
     val contactList = mutableListOf<Contact4>()
+    var name: String
+    var phone: Long?
+    var company: String?
     var answer: String
+    var proceed = true
 
-    contactList.forEachIndexed { i, it ->
-        println("Контакт ${i + 1}:")
-        it.print()
+    while (proceed) {
+
+        println("Введите данные контакта:")
+        print("- Имя: ")
+        name = readln().trim()
+        print("- Номер (только цифры): ")
+        phone = readln().trim().toLongOrNull()
+        print("- Компания (пустая строка, если не задано): ")
+        company = readln().trim()
+
+        if (phone != null && !name.isBlank()) {
+            contactList.add(
+                Contact4(
+                    name,
+                    phone,
+                    if (company.isBlank()) null else company
+                )
+            )
+            println("Запись успешно добавлена.")
+        } else {
+            println("Запись должна содержать имя и корректный номер телефона!")
+        }
+
+        while (true) {
+            println("Добавить еще одну запись? (да/нет)")
+            answer = readln().trim().lowercase()
+            when (answer) {
+                "да" -> {
+                    break
+                }
+                "нет" -> {
+                    proceed = false
+                    break
+                }
+                else -> {
+                    println("Введите только \"да\" или \"нет\"")
+                }
+            }
+        }
     }
+
+    println("Список контактов:")
+    if (contactList.isNotEmpty()) {
+        contactList.forEachIndexed { i, it ->
+            println("Контакт ${i + 1}:")
+            it.printContactInfo()
+        }
+    } else {
+        println("<пусто>")
+    }
+
 }
 
 class Contact4(
@@ -28,9 +79,9 @@ class Contact4(
     val phone: Long,
     val company: String? = null,
 ) {
-    fun print() {
-        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: "$NULL_COMPANY_VALUE"}")
+    fun printContactInfo() {
+        println("- Имя: $name\n- Номер: $phone\n- Компания: ${company ?: NULL_COMPANY_TEXT}")
     }
 }
 
-const val NULL_COMPANY_VALUE = "<не указано>"
+const val NULL_COMPANY_TEXT = "<не указано>"
