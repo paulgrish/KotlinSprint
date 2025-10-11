@@ -11,8 +11,6 @@ package lesson_13.task5
  * в консоль.
  */
 fun main() {
-
-
     println("Введите данные контакта:")
     print("- Имя: ")
     val name = readln().trim()
@@ -24,15 +22,15 @@ fun main() {
 
     try {
         phone = phoneStr.toLong()
-    } catch (e: Exception) {
-        println("Номер введен неправильно, ошибка \"${e.message}\"")
+    } catch (e: NumberFormatException) {
+        println("Номер введен неправильно, ошибка \"${e::class.simpleName}\"")
         return
     }
 
     val contact = Contact5(
         name,
         phone,
-        if (company.isBlank()) null else company
+        company.ifBlank { null }
     )
 
     println("Введен контакт:")
