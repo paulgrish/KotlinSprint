@@ -13,30 +13,24 @@ package lesson_13.task4
  * Выведи созданные объекты в консоль методом класса.
  */
 fun main() {
-
     val contactList = mutableListOf<Contact4>()
-    var name: String
-    var phone: Long?
-    var company: String?
-    var answer: String
     var proceed = true
 
     while (proceed) {
-
         println("Введите данные контакта:")
         print("- Имя: ")
-        name = readln().trim()
+        val name = readln().trim()
         print("- Номер (только цифры): ")
-        phone = readln().trim().toLongOrNull()
+        val phone = readln().trim().toLongOrNull()
         print("- Компания (пустая строка, если не задано): ")
-        company = readln().trim()
+        val company = readln().trim()
 
         if (phone != null && !name.isBlank()) {
             contactList.add(
                 Contact4(
                     name,
                     phone,
-                    if (company.isBlank()) null else company
+                    company.ifBlank { null }
                 )
             )
             println("Запись успешно добавлена.")
@@ -46,7 +40,7 @@ fun main() {
 
         while (true) {
             println("Добавить еще одну запись? (да/нет)")
-            answer = readln().trim().lowercase()
+            val answer = readln().trim().lowercase()
             when (answer) {
                 "да" -> {
                     break
@@ -71,7 +65,6 @@ fun main() {
     } else {
         println("<пусто>")
     }
-
 }
 
 class Contact4(
