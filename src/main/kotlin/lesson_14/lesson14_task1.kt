@@ -28,7 +28,7 @@ open class Linear(
         println(
             "Ship type: ${this::class.simpleName}\n- Speed: $speed knots\n" +
                     "- Cargo: $cargo tons\n- Passengers: $passengers\n" +
-                    if (icebreaking) "Is icebreaking\n" else ""
+                    if (icebreaking) "- Is icebreaking\n" else ""
         )
     }
 }
