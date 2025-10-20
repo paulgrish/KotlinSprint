@@ -18,14 +18,17 @@ fun main() {
     val linear1 = Linear()
     linear1.printShipInfo()
     linear1.loading()
+    println()
 
     val cargo1 = Cargo()
     cargo1.printShipInfo()
     cargo1.loading()
+    println()
 
     val icebreaker1 = Icebreaker()
     icebreaker1.printShipInfo()
     icebreaker1.loading()
+    println()
 
 }
 
@@ -36,7 +39,7 @@ open class Linear(
     val icebreaking: Boolean = false,
 ) {
     fun printShipInfo() {
-        println(
+        print(
             "Ship type: ${this::class.simpleName}\n- Speed: $speed knots\n" +
                     "- Cargo: $cargo tons\n- Passengers: $passengers\n" +
                     if (icebreaking) "- Is icebreaker\n" else ""
