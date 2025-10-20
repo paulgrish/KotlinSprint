@@ -22,3 +22,24 @@ package org.example.lesson_14
 fun main() {
 
 }
+
+abstract class Figure(
+    val color: String,
+) {
+
+}
+
+class Circle(
+    color: String,
+    val radius: Double,
+) : Figure(color) {
+
+}
+
+class Rectangle(
+    color: String,
+    val width: Double,
+    val height: Double,
+) : Figure(color) {
+
+}
