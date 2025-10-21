@@ -13,4 +13,53 @@ package lesson_14
  */
 fun main() {
 
+    val planet1 = Planet("Mars", isVisitable = true, satellites = listOf(
+        Satellite("Deimos", isVisitable = false),
+        Satellite("Fobos"),
+    ))
+    planet1.printBriefInfo()
+
+    println()
+
+    val planet2 = Planet("Mercury", hasAtmosphere = false, satellites = listOf())
+    planet2.printBriefInfo()
+
 }
+
+abstract class SpaceObject(
+    val name: String,
+    val hasAtmosphere: Boolean = false,
+    val isVisitable: Boolean = false,
+) {
+    open fun printBriefInfo() {
+        println("${this::class.simpleName}: \"$name\"")
+    }
+}
+
+class Planet(
+    name: String,
+    hasAtmosphere: Boolean = true,
+    isVisitable: Boolean = false,
+    val satellites: List<Satellite>
+) : SpaceObject(name, hasAtmosphere, isVisitable) {
+
+    override fun printBriefInfo() {
+        super.printBriefInfo()
+        if (satellites.size > 0) {
+            println("Has satellites:")
+            satellites.forEachIndexed { i, it ->
+                print("${i + 1}. ")
+                it.printBriefInfo()
+            }
+        } else {
+            println("Has no satellites.")
+        }
+    }
+
+}
+
+class Satellite(
+    name: String,
+    hasAtmosphere: Boolean = false,
+    isVisitable: Boolean = true,
+) : SpaceObject(name, hasAtmosphere, isVisitable)
