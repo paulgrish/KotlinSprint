@@ -1,4 +1,4 @@
-package org.example.lesson_14
+package lesson_14
 
 /**
  * Задача 3 к Уроку 14
@@ -21,11 +21,30 @@ package org.example.lesson_14
  */
 fun main() {
 
+    val figureList = listOf<Figure>(
+        Circle(COLOR1, 1.44),
+        Rectangle(COLOR1, 2.4, 4.1),
+        Circle(COLOR2, 5.0),
+        Rectangle(COLOR2, 3.0, 4.0),
+    )
+
+    val blackPerimeters = figureList.filter { it.color == COLOR1 }.sumOf { it.perimeter() }
+    val whiteSquare = figureList.filter { it.color == COLOR2 }.sumOf { it.square() }
+
+    println("Sum of $COLOR1 figures perimeters: $blackPerimeters")
+    println("Sum of $COLOR2 figures squares: $whiteSquare")
+
 }
+
+const val COLOR1 = "black"
+const val COLOR2 = "white"
 
 abstract class Figure(
     val color: String,
 ) {
+
+    abstract fun square(): Double
+    abstract fun perimeter(): Double
 
 }
 
@@ -34,6 +53,14 @@ class Circle(
     val radius: Double,
 ) : Figure(color) {
 
+    override fun square(): Double {
+        return Math.PI * radius * radius
+    }
+
+    override fun perimeter(): Double {
+        return 2.0 * Math.PI * radius
+    }
+
 }
 
 class Rectangle(
@@ -41,5 +68,13 @@ class Rectangle(
     val width: Double,
     val height: Double,
 ) : Figure(color) {
+
+    override fun square(): Double {
+        return width * height
+    }
+
+    override fun perimeter(): Double {
+        return 2.0 * (width + height)
+    }
 
 }
