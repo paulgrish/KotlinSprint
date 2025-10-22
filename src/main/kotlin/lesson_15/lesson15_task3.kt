@@ -13,3 +13,25 @@ package lesson_15
 fun main() {
 
 }
+
+class Chat {
+    val users = mutableListOf<User>()
+    val messages = mutableListOf<Message>()
+}
+
+class Message(
+    val user: User,
+    val message: String,
+)
+
+abstract class User(
+    val name: String,
+)
+
+class Ordinary(
+    name: String,
+) : User(name)
+
+class Administrator(
+    name: String,
+) : User(name)
