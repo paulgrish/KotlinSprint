@@ -16,4 +16,38 @@ package lesson_15
  */
 fun main() {
 
+    val server = WeatherServer()
+
+    val data1 = Temperature(22.7f)
+    val data2 = PrecipitationAmount(4)
+
+    server.sendMessage(data1)
+    server.sendMessage(data2)
+
+}
+
+class WeatherServer {
+    fun sendMessage(msg: WeatherStationStats) {
+        msg.printWeatherData()
+    }
+}
+
+abstract class WeatherStationStats {
+    abstract fun printWeatherData()
+}
+
+class Temperature(
+    val temperature: Float
+) : WeatherStationStats() {
+    override fun printWeatherData() {
+        println("Temperature = %.1f°C".format(temperature))
+    }
+}
+
+class PrecipitationAmount(
+    val precipitationInMm: Int
+) : WeatherStationStats() {
+    override fun printWeatherData() {
+        println("Preciptation = $precipitationInMm mm")
+    }
 }
