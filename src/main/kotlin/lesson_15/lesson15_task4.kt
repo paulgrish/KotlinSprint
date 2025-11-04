@@ -12,21 +12,61 @@ package lesson_15
  */
 fun main() {
 
+    val instrument1 = Instrument("Гитара", 5)
+    val instrument2 = Instrument("Пианино", 2)
+    val instrument3 = Instrument("Там-там", 12)
+    val store = listOf<Good>(
+        instrument1,
+        Part("Струны металлические (комплект)", 32, instrument1.id),
+        Part("Струны нейлоновые (комплект)",52, instrument1.id),
+        Part("Медиатор", 114, instrument1.id),
+        instrument2,
+        Part("Струна басовая (в асс.)", 67, instrument2.id),
+        Part("Молоточек средний", 7, instrument2.id),
+        Part("Демпфер", 79, instrument2.id),
+        instrument3,
+        Part("Винт", 41, instrument3.id),
+        Part("Кожа", 3, instrument3.id),
+        Instrument("Ксилофон", 1),
+    )
+
+    store.forEach {
+        it.printInfo()
+    }
+
+    print("Введите название инструмента для поиска: ")
+    val name = readln()
+    println("Выполняется поиск...")
+    val foundInstrument = store.find { it.match(name) }
+    if (foundInstrument != null) {
+        foundInstrument.printInfo()
+        println("Выполняется поиск комплектующих...")
+        store.filter { it.match((foundInstrument as Instrument).id) }
+            .let {
+                if (it.size > 0) {
+                    it.forEach { it.printInfo() }
+                } else {
+                    println("Ничего не найдено.")
+                }
+            }
+    } else {
+        println("Ничего не найдено.")
+    }
 }
 
 abstract class Good(
     val name: String,
-    val cost: Float,
+    val count: Int,
 ) : Searchable {
     open fun printInfo() {
-        println("%s: %.2f rub".format(name, cost))
+        println("${this::class.simpleName} \"$name\": на складе $count шт.")
     }
 }
 
 class Instrument(
     name: String,
-    cost: Float,
-) : Good(name, cost) {
+    count: Int,
+) : Good(name, count) {
     val id = nextId()
 
     override fun match(name_: String): Boolean {
@@ -45,9 +85,9 @@ class Instrument(
 
 class Part(
     name: String,
-    cost: Float,
+    count: Int,
     val instrumentId: Int,
-) : Good(name, cost) {
+) : Good(name, count) {
     override fun match(name_: String): Boolean {
         return false
     }
