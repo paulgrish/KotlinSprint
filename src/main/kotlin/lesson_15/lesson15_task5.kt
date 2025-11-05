@@ -15,47 +15,44 @@ package lesson_15
  */
 fun main() {
 
-    Car().apply {
-        loadPassengers(8)
-        loadPassengers(0)
-        loadCargo(1.0f)
-        transfer()
-        unload()
-    }
+    val tr1 = Car()
+    tr1.onLine()
+    tr1.loadPassengers(8)
+    tr1.loadPassengers(0)
+    tr1.loadCargo(1.0f)
+    tr1.transfer()
+    tr1.unload()
 
-    Car().apply {
-        loadPassengers(2)
-        loadPassengers(1)
-        transfer()
-        unload()
-    }.apply {
-        loadPassengers(1)
-        transfer()
-        unload()
-    }
+    val tr2 = Car()
+    tr2.onLine()
+    tr2.loadPassengers(2)
+    tr2.loadPassengers(1)
+    tr2.transfer()
+    tr2.unload()
+    tr2.loadPassengers(1)
+    tr2.transfer()
+    tr2.unload()
 
-    Truck().apply {
-        loadPassengers(2)
-        loadCargo(2.8f)
-        transfer()
-        unload()
-    }
+    val tr3 = Truck()
+    tr3.onLine()
+    tr3.loadPassengers(2)
+    tr3.loadCargo(2.8f)
+    tr3.transfer()
+    tr3.unload()
 
-    Truck().apply {
-        loadPassengers(1)
-        loadCargo(0.8f)
-        transfer()
-        unload()
-    }.apply {
-        loadCargo(0.95f)
-        loadCargo(0.25f)
-        transfer()
-        unload()
-    }.apply {
-        loadPassengers(1)
-        transfer()
-        unload()
-    }
+    val tr4 = Truck()
+    tr4.onLine()
+    tr4.loadPassengers(1)
+    tr4.loadCargo(0.8f)
+    tr4.transfer()
+    tr4.unload()
+    tr4.loadCargo(0.95f)
+    tr4.loadCargo(0.25f)
+    tr4.transfer()
+    tr4.unload()
+    tr4.loadPassengers(1)
+    tr4.transfer()
+    tr4.unload()
 }
 
 interface Dockable {
@@ -71,13 +68,7 @@ interface Movable {
     fun transfer()
 }
 
-abstract class Transport : Dockable, Movable {
-    init {
-        onLine()
-    }
-}
-
-class Car : Transport() {
+class Car : Dockable, Movable {
     var passengers = 0
 
     override fun loadPassengers(count: Int) {
@@ -107,7 +98,7 @@ class Car : Transport() {
     }
 }
 
-class Truck : Transport() {
+class Truck : Dockable, Movable {
     var passengers = 0
     var cargo = 0.0f
 
