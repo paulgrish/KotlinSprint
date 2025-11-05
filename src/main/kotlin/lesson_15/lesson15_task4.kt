@@ -34,30 +34,19 @@ fun main() {
         it.printInfo()
     }
 
-    print("Введите название инструмента для поиска: ")
-    val name = readln()
-    println("Выполняется поиск...")
-    val foundInstrument = store.find { it.match(name) }
-    if (foundInstrument != null) {
-        foundInstrument.printInfo()
-        println("Выполняется поиск комплектующих...")
-        store.filter { it.match((foundInstrument as Instrument).id) }
-            .let {
-                if (it.size > 0) {
-                    it.forEach { it.printInfo() }
-                } else {
-                    println("Ничего не найдено.")
-                }
-            }
-    } else {
-        println("Ничего не найдено.")
-    }
+    println()
+    instrument1.printInfo()
+    instrument1.searchParts()
+}
+
+interface Searchable {
+    fun searchParts()
 }
 
 abstract class Good(
     val name: String,
     val count: Int,
-) : Searchable {
+) {
     open fun printInfo() {
         println("${this::class.simpleName} \"$name\": на складе $count шт.")
     }
@@ -66,15 +55,11 @@ abstract class Good(
 class Instrument(
     name: String,
     count: Int,
-) : Good(name, count) {
+) : Good(name, count), Searchable  {
     val id = nextId()
 
-    override fun match(name_: String): Boolean {
-        return name == name_
-    }
-
-    override fun match(instrumentId_: Int): Boolean {
-        return false
+    override fun searchParts() {
+        println("Выполняется поиск...")
     }
 
     companion object {
@@ -88,21 +73,9 @@ class Part(
     count: Int,
     val instrumentId: Int,
 ) : Good(name, count) {
-    override fun match(name_: String): Boolean {
-        return false
-    }
-
-    override fun match(instrumentId_: Int): Boolean {
-        return instrumentId == instrumentId_
-    }
 
     override fun printInfo() {
         print("\t")
         super.printInfo()
     }
-}
-
-interface Searchable {
-    fun match(name_: String): Boolean
-    fun match(instrumentId_: Int): Boolean
 }
