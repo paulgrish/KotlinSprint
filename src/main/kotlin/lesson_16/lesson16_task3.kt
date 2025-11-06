@@ -11,5 +11,19 @@ package lesson_16
  * Выведи информацию о корректности введенного пароля.
  */
 fun main() {
+    val user = User("ABC", "123")
+    println("User: ${user.login}")
+    print("Enter password: ")
+    val pw = readln()
+    if (user.checkPassword(pw))
+        println("Пароль верен")
+    else
+        println("Пароль НЕ верен")
+}
 
+class User(
+    val login: String,
+    private val password: String,
+) {
+    fun checkPassword(testPassword: String) = testPassword == password
 }
