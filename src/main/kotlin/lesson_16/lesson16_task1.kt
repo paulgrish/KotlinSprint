@@ -8,5 +8,16 @@ package lesson_16
  * это число – вызвать специальный метод, который напечатает информацию в консоль.
  */
 fun main() {
-
+    val dice = Dice()
+    dice.showValue()
 }
+
+class Dice {
+    private val value = (DICE_MIN_VALUE..DICE_MAX_VALUE).random()
+    fun showValue() {
+        println("Dice value is $value")
+    }
+}
+
+const val DICE_MIN_VALUE = 1
+const val DICE_MAX_VALUE = 6
