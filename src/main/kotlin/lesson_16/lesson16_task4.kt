@@ -11,7 +11,14 @@ package lesson_16
  * методу класса для изменения статуса.
  */
 fun main() {
-
+    val order1 = Order(222)
+    println("Статус готовности: ${order1.getReadyStatus()}")
+    order1.changeReadyStatus(false)
+    println("Статус готовности: ${order1.getReadyStatus()}")
+    order1.changeReadyStatus(true)
+    println("Статус готовности: ${order1.getReadyStatus()}")
+    order1.changeReadyStatus(true)
+    println("Статус готовности: ${order1.getReadyStatus()}")
 }
 
 class Order(
