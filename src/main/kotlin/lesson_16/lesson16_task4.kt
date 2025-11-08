@@ -16,7 +16,28 @@ fun main() {
 
 class Order(
     val id: Int,
-    var ready: Boolean = false,
 ) {
+    private var readyStatus = false
 
+    private fun applyReadyStatus(newStatus: Boolean) {
+        readyStatus = newStatus
+    }
+
+    fun getReadyStatus() = readyStatus
+
+    fun changeReadyStatus(newStatus: Boolean) {
+        if (changeReadyStatusRequest(id, readyStatus, newStatus)) {
+            applyReadyStatus(newStatus)
+            println("Статус заказа $id изменен на \"${if (readyStatus) "ГОТОВ" else "НЕ ГОТОВ"}\"")
+        } else {
+            println("В изменении статуса заказа $id отказано")
+        }
+    }
 }
+
+fun changeReadyStatusRequest(orderId: Int, currentStatus: Boolean, newStatus: Boolean): Boolean {
+    println("Заявка на изменение статуса заказа $orderId отправлена менеджеру")
+    return currentStatus != newStatus && (1..100).random() <= ACCEPT_CHANGE_STATUS_PERCENT
+}
+
+const val ACCEPT_CHANGE_STATUS_PERCENT = 82
