@@ -10,11 +10,11 @@ package lesson_17
  * Создай экземпляр класса и протестируй работу.
  */
 fun main() {
-    val ship = Ship("Смелый", 30, "Мурманск")
+    val ship = Ship("Смелый", 25, "Мурманск")
     ship.printInfo()
     ship.homeport = "Владивосток"
     ship.printInfo()
-    ship.speed = 35
+    ship.speed = 32
     ship.printInfo()
     ship.name = "Отважный"
     ship.printInfo()
