@@ -9,4 +9,29 @@ package lesson_17
  */
 fun main() {
 
+    val quiz = Quiz("Здесь есть кто-нибудь?")
+    quiz.printInfo()
+    quiz.answer = "Да, кто-нибудь есть."
+    quiz.printInfo()
+    quiz.answer = "Нет, кто-нибудя нету."
+    quiz.printInfo()
+}
+
+class Quiz(
+    question_: String,
+    answer_: String? = null,
+) {
+
+    val question: String = question_
+        get() = field
+
+    var answer: String? = answer_
+        get() = field
+        set(value) {
+            field = value
+        }
+
+    fun printInfo() {
+        println("$question : $answer")
+    }
 }
