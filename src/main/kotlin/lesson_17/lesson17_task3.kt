@@ -12,5 +12,25 @@ package lesson_17
  * Создай экземпляр “скрытой” папки. Протестируй попытку чтения ее данных.
  */
 fun main() {
+    val folder = Folder("Photos", 3456, true)
+    folder.printInfo()
+    println("Раскрываем папку...")
+    folder.secret = false
+    folder.printInfo()
+}
 
+class Folder(
+    name_: String,
+    filesCount_: Int,
+    var secret: Boolean = false,
+) {
+    val name: String = name_
+        get() = if (secret) "скрытая папка" else field
+
+    val filesCount: Int = filesCount_
+        get() = if (secret) 0 else field
+
+    fun printInfo() {
+        println("$name: $filesCount files")
+    }
 }
