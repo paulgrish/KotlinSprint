@@ -9,7 +9,7 @@ package lesson_17
  */
 fun main() {
 
-    val quiz = Quiz("Здесь есть кто-нибудь?")
+    val quiz = Quiz("Здесь есть кто-нибудь?", "Его и сейчас здесь нет.")
     quiz.printInfo()
     quiz.answer = "Да, кто-нибудь есть."
     quiz.printInfo()
@@ -19,7 +19,7 @@ fun main() {
 
 class Quiz(
     question_: String,
-    answer_: String? = null,
+    answer_: String,
 ) {
 
     val question: String = question_
