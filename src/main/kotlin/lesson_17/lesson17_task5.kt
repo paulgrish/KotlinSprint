@@ -13,5 +13,36 @@ package lesson_17
  * на сеттерах и геттерах.
  */
 fun main() {
+    val user = UserData("CptPower", "1234")
+    println("${user.login} : ${user.password}")
+    user.login = "CptPower"
+    user.login = "Mickey"
+    println("${user.login} : ${user.password}")
+    user.password = "abcdefgh"
+    println("${user.login} : ${user.password}")
+}
 
+class UserData(
+    _login: String,
+    _password: String,
+) {
+    var login: String = _login
+        set(value) {
+            if (value != field) {
+                field = value
+                println("Логин успешно изменен")
+            } else {
+                println("Логин не был изменен")
+            }
+        }
+
+    var password: String = _password
+        set(value) = println("Вы не можете изменить пароль")
+        get() {
+            var result = ""
+            field.forEach {
+                result += '*'
+            }
+            return result
+        }
 }
