@@ -12,5 +12,33 @@ package lesson_17
  * использовать сеттер.
  */
 fun main() {
+    val box = PostBox(222, "Сургут")
+    box.printInfo()
+    box.place = "Екатеринбург"
+    box.printInfo()
+    box.place = "Москва"
+    box.printInfo()
+    box.place = "Санкт-Петербург"
+    box.printInfo()
+}
 
+class PostBox(
+    val id: Int,
+    startPlace: String,
+) {
+    var place: String = startPlace
+        set(value) {
+            if (value != field) {
+                field = value
+                _moveCounter++
+            }
+        }
+
+    private var _moveCounter: Int = 0
+    val moveCounter: Int
+        get() = _moveCounter
+
+    fun printInfo() {
+        println("Box ID: $id, place: $place, moves: $moveCounter")
+    }
 }
