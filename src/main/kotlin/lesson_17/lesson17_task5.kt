@@ -38,11 +38,5 @@ class UserData(
 
     var password: String = _password
         set(value) = println("Вы не можете изменить пароль")
-        get() {
-            var result = ""
-            field.forEach {
-                result += '*'
-            }
-            return result
-        }
+        get() = "*".repeat(field.length)
 }
