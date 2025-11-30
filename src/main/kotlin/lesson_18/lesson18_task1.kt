@@ -15,5 +15,28 @@ package org.example.lesson_18
  * для обработки одного или нескольких товаров.
  */
 fun main() {
+    val order1 = Order(111)
+    order1.setOrderData("Сыр Пармезан")
 
+    val order2 = Order(222)
+    order2.setOrderData(listOf(
+        "Вино Marquis Bataille",
+        "Сыр Parmejano",
+        "Виноград Dual"
+    ))
+}
+
+class Order(
+    val id: Int,
+) {
+    fun setOrderData(value: String) {
+        println("Заказан товар: $value")
+    }
+
+    fun setOrderData(value: List<String>) {
+        print("Заказаны следующие товары: ")
+        value.forEachIndexed { i, it ->
+            print(if (i > 0) ", $it" else it)
+        }
+    }
 }
