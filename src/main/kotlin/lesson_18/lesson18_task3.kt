@@ -1,0 +1,46 @@
+package lesson_18
+
+/**
+ * Задача 3 к Уроку 18
+ *
+ * В тамагочи есть лиса, собака и кошка. Они могут только есть и спать.
+ * Лиса ест ягоды, собака – кости, а кошка – рыбу. У каждого животного есть имя. Эти действия отображаются в консоли
+ * по такому шаблону: “\[имя] -> \[действие]”.
+ *
+ * – опиши эти классы, используя полиморфизм;
+ * – создай по одному объекту животного, сохрани их в список с принудительным указанием типа списка;
+ * – в цикле вызывай метод приема пищи для каждого экземпляра.
+ */
+fun main() {
+    val pets = listOf<Tamagochi>(
+        Fox("Тама-тама"),
+        Dog("Шарик"),
+        Cat("Матроскин")
+    )
+    pets.forEach {
+        it.eat()
+    }
+}
+
+abstract class Tamagochi(val name: String) {
+    abstract fun eat()
+    protected fun doEat(food: String) {
+        println("$name (${this::class.simpleName}) -> ест $food")
+    }
+}
+
+class Fox(name: String) : Tamagochi(name) {
+    override fun eat() {
+        doEat("ягоды")
+    }
+}
+class Dog(name: String) : Tamagochi(name) {
+    override fun eat() {
+        doEat("кости")
+    }
+}
+class Cat(name: String) : Tamagochi(name) {
+    override fun eat() {
+        doEat("рыбу")
+    }
+}
