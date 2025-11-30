@@ -13,5 +13,30 @@ package lesson_18
  * - выполни итерацию по списку и вызови у каждого объекта метод броска кости.
  */
 fun main() {
+    val dices = listOf<Dice>(
+        Tetrahedron(),
+        Octahedron(),
+        Hexahedron(),
+        Hexahedron(),
+        Octahedron(),
+        Tetrahedron(),
+    )
+    dices.forEach {
+        it.roll()
+    }
+}
 
+abstract class Dice {
+    abstract fun hit(): Int
+    fun roll() = println("Результат броска: ${hit()}")
+}
+
+class Tetrahedron : Dice() {
+    override fun hit() = (1..4).random()
+}
+class Octahedron : Dice() {
+    override fun hit() = (1..6).random()
+}
+class Hexahedron : Dice() {
+    override fun hit() = (1..8).random()
 }
