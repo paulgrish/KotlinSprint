@@ -34,9 +34,6 @@ class Order(
     }
 
     fun setOrderData(value: List<String>) {
-        print("Заказаны следующие товары: ")
-        value.forEachIndexed { i, it ->
-            print(if (i > 0) ", $it" else it)
-        }
+        println("Заказаны следующие товары: ${value.joinToString()}")
     }
 }
