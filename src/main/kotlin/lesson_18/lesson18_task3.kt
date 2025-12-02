@@ -20,27 +20,21 @@ fun main() {
     pets.forEach {
         it.eat()
     }
+    pets.first().sleep()
 }
 
-abstract class Tamagochi(val name: String) {
-    abstract fun eat()
-    protected fun doEat(food: String) {
+open class Tamagochi(
+    val name: String,
+    val food: String,
+) {
+    open fun eat() {
         println("$name (${this::class.simpleName}) -> ест $food")
     }
+    open fun sleep() {
+        println("$name (${this::class.simpleName}) -> спит")
+    }
 }
 
-class Fox(name: String) : Tamagochi(name) {
-    override fun eat() {
-        doEat("ягоды")
-    }
-}
-class Dog(name: String) : Tamagochi(name) {
-    override fun eat() {
-        doEat("кости")
-    }
-}
-class Cat(name: String) : Tamagochi(name) {
-    override fun eat() {
-        doEat("рыбу")
-    }
-}
+class Fox(name: String) : Tamagochi(name, "ягоды")
+class Dog(name: String) : Tamagochi(name, "кости")
+class Cat(name: String) : Tamagochi(name, "рыбу")
