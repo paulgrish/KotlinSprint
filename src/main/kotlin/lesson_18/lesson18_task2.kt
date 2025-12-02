@@ -15,10 +15,10 @@ package lesson_18
 fun main() {
     val dices = listOf<Dice>(
         Tetrahedron(),
-        Octahedron(),
-        Hexahedron(),
         Hexahedron(),
         Octahedron(),
+        Octahedron(),
+        Hexahedron(),
         Tetrahedron(),
     )
     dices.forEach {
@@ -26,17 +26,13 @@ fun main() {
     }
 }
 
-abstract class Dice {
-    abstract fun hit(): Int
+open class Dice(
+    val edges: Int,
+) {
+    fun hit() = (1..edges).random()
     fun roll() = println("Результат броска: ${hit()}")
 }
 
-class Tetrahedron : Dice() {
-    override fun hit() = (1..4).random()
-}
-class Octahedron : Dice() {
-    override fun hit() = (1..6).random()
-}
-class Hexahedron : Dice() {
-    override fun hit() = (1..8).random()
-}
+class Tetrahedron : Dice(4)
+class Hexahedron : Dice(6)
+class Octahedron : Dice(8)
