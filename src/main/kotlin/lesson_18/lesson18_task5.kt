@@ -12,36 +12,19 @@ package lesson_18
  */
 fun main() {
     val s = Screen()
-    s.draw(7, 8)
-    s.draw(1, 2, 3)
-    s.draw(5, 2, 4, 6)
-    s.draw(-1.2f, -3.4f)
-    s.draw(7.6f, 5.4f, 3.2f)
-    s.draw(2.3f, -4.5f, 6.7f, 8.9f)
+    println(s.draw(7, 8))
+    println(s.draw(1, 2, 3))
+    println(s.draw(5, 2, 4, 6))
+    println(s.draw(-1.2f, -3.4f))
+    println(s.draw(7.6f, 5.4f, 3.2f))
+    println(s.draw(2.3f, -4.5f, 6.7f, 8.9f))
 }
 
 class Screen {
-    fun draw(x: Int, y: Int) {
-        println("Point at ($x; $y)")
-    }
-
-    fun draw(x: Int, y: Int, r: Int) {
-        println("Circle at ($x; $y), radius $r")
-    }
-
-    fun draw(x: Int, y: Int, w: Int, h: Int) {
-        println("Circle at ($x; $y), width $w, height $h")
-    }
-
-    fun draw(x: Float, y: Float) {
-        println("Point at ($x; $y)")
-    }
-
-    fun draw(x: Float, y: Float, r: Float) {
-        println("Circle at ($x; $y), radius $r")
-    }
-
-    fun draw(x: Float, y: Float, w: Float, h: Float) {
-        println("Circle at ($x; $y), width $w, height $h")
-    }
+    fun draw(x: Int, y: Int) = "Point at ($x; $y)"
+    fun draw(x: Int, y: Int, r: Int) = "Circle at ($x; $y), radius $r"
+    fun draw(x: Int, y: Int, w: Int, h: Int) = "Circle at ($x; $y), width $w, height $h"
+    fun draw(x: Float, y: Float) = "Point at ($x; $y)"
+    fun draw(x: Float, y: Float, r: Float) = "Circle at ($x; $y), radius $r"
+    fun draw(x: Float, y: Float, w: Float, h: Float) = "Circle at ($x; $y), width $w, height $h"
 }
