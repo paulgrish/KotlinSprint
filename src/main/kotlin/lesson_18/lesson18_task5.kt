@@ -23,8 +23,8 @@ fun main() {
 class Screen {
     fun draw(x: Int, y: Int) = "Point at ($x; $y)"
     fun draw(x: Int, y: Int, r: Int) = "Circle at ($x; $y), radius $r"
-    fun draw(x: Int, y: Int, w: Int, h: Int) = "Circle at ($x; $y), width $w, height $h"
+    fun draw(x: Int, y: Int, w: Int, h: Int) = "Rectangle at ($x; $y), width $w, height $h"
     fun draw(x: Float, y: Float) = "Point at ($x; $y)"
     fun draw(x: Float, y: Float, r: Float) = "Circle at ($x; $y), radius $r"
-    fun draw(x: Float, y: Float, w: Float, h: Float) = "Circle at ($x; $y), width $w, height $h"
+    fun draw(x: Float, y: Float, w: Float, h: Float) = "Rectangle at ($x; $y), width $w, height $h"
 }
