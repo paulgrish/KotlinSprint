@@ -12,5 +12,15 @@ package lesson_19
  * распечатав список в консоль.
  */
 fun main() {
+    println("Вы можете добавить в аквариум рыбок следующих типов:")
+    println(FishKinds.entries.joinToString())
+    println("Полные названия этих рыбок:")
+    println(FishKinds.entries.joinToString { it.fullName })
+}
 
+enum class FishKinds (val fullName: String) {
+    GUPPY("guppy"),
+    ANGELFISH("angelfish"),
+    GOLDFISH("goldfish"),
+    SIAMESEFIGHTINGFISH("siamese fighting fish"),
 }
