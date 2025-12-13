@@ -10,5 +10,22 @@ package org.example.lesson_19
  * вызывать падение программы с ошибкой NotImplementedError.
  */
 fun main() {
+    val ship = Spaceship()
+    ship.takeOff()
+    Thread.sleep(1000)
+    ship.landing()
+    Thread.sleep(1000)
+    ship.defend()
+}
 
+class Spaceship {
+    fun takeOff() {
+        println("Взлетаем!")
+    }
+    fun landing() {
+        println("Протокол посадки не определен, необходимо определить логику операции.")
+    }
+    fun defend() {
+        TODO("Оборона от астероидов")
+    }
 }
