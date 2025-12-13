@@ -12,5 +12,39 @@ package lesson_19
  *  – для вывода информации о товаре, для категории используй метод определения категории.
  */
 fun main() {
+    val goods = listOf(
+        Good("Шапка вязанная черная", 48, Category.CLOTHES),
+        Good("Ластик 2х1.5", 12, Category.STATIONERY),
+        Good("Сметана 15%", 333, Category.OTHER),
+        Good("Футболка с принтом XXL", 7514, Category.CLOTHES),
+        Good("Набор карандашей 12 цв.", 159, Category.STATIONERY),
+        Good("Машинка Мозератти 1:43", 143, Category.OTHER),
+    )
+    goods.forEach {
+        it.printInfo()
+    }
+}
 
+class Good(
+    val name: String,
+    val id: Int,
+    val category: Category,
+) {
+    fun printInfo() {
+        println("Информация о товаре: $name, id: $id, категория: ${category.getName()}")
+    }
+}
+
+enum class Category {
+    CLOTHES {
+        override fun getName() = "Одежда"
+    },
+    STATIONERY {
+        override fun getName() = "Канцтовары"
+    },
+    OTHER {
+        override fun getName() = "Разное"
+    };
+    
+    abstract fun getName(): String
 }
