@@ -37,10 +37,6 @@ fun main() {
         }
     }
 
-    cards.add(Person("Анна", Sex.FEMALE))
-    cards.add(Person("Петр", Sex.MALE))
-    cards.add(Person("Иван", Sex.MALE))
-
     cards.forEach {
         it.printInfo()
     }
