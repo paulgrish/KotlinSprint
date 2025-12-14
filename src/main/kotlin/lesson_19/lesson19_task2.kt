@@ -36,15 +36,15 @@ class Good(
 }
 
 enum class Category {
-    CLOTHES {
-        override fun getName() = "Одежда"
-    },
-    STATIONERY {
-        override fun getName() = "Канцтовары"
-    },
-    OTHER {
-        override fun getName() = "Разное"
-    };
+    CLOTHES,
+    STATIONERY,
+    OTHER;
     
-    abstract fun getName(): String
+    fun getName(): String {
+        return when(this) {
+            CLOTHES -> "Одежда"
+            STATIONERY -> "Канцтовары"
+            OTHER -> "Разное"
+        }
+    }
 }
