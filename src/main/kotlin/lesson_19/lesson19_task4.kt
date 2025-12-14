@@ -14,5 +14,42 @@ package lesson_19
  * – в решении должен использоваться enum.
  */
 fun main() {
+    val tank = Tank()
+    tank.shot()
+    tank.charge(Patron.BLUE)
+    tank.shot()
+    tank.shot()
+    tank.charge(Patron.GREEN)
+    tank.charge(Patron.BLUE)
+    tank.shot()
+    tank.charge(Patron.RED)
+    tank.shot()
+    tank.shot()
+}
 
+enum class Patron(val power: Int) {
+    BLUE(5),
+    GREEN(10),
+    RED(20),
+}
+
+class Tank {
+    private var charged: Patron? = null
+
+    fun charge(patron: Patron) {
+        if (charged == null) {
+            charged = patron
+        } else {
+            println("Танк уже заряжен, перезарядить невозможно.")
+        }
+    }
+
+    fun shot() {
+        if (charged != null) {
+            println("Произведен выстрел патроном ${charged!!.name}, урон составил ${charged!!.power}")
+            charged = null
+        } else {
+            println("Танк не заряжен, урон 0.")
+        }
+    }
 }
