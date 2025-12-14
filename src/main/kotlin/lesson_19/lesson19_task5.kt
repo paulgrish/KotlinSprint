@@ -12,7 +12,30 @@ fun main() {
     val cards = mutableListOf<Person>()
 
     println("Введите данные $ENTRIES_COUNT человек.")
+    println("Имя может быть введено кратко или полное (через пробел, например, \"фамилия имя отчество\" и т.п.")
+    println("Пол может быть указан следующим образом:")
+    Sex.printInstruction()
 
+    for (i in 1..ENTRIES_COUNT) {
+        while (true) {
+            print("Введите данные человека $i.\nИмя: ")
+            val name = readln()
+            print("Пол: ")
+            val sex = readln()
+            var person: Person? = null
+            if (sex.length == 1) {
+                Sex.entries.forEach {
+                    if (it.machChar(sex[0]))
+                        person = Person(name, it)
+                }
+            }
+            if (person != null) {
+                cards.add(person)
+                break
+            }
+            println("Данные введены некорректно. Попробуйте еще раз.")
+        }
+    }
 
     cards.add(Person("Анна", Sex.FEMALE))
     cards.add(Person("Петр", Sex.MALE))
@@ -39,10 +62,12 @@ enum class Sex(
     MALE("Мужской", listOf('м', 'm')),
     FEMALE("Женский", listOf('ж', 'f'));
 
-    fun printInstruction() {
-        println("Для ввода пола укажите один символ (в любом регистре):")
-        entries.forEach {
-            it.printItemInstruction()
+    companion object {
+        fun printInstruction() {
+            println("Для ввода пола укажите один символ (в любом регистре):")
+            entries.forEach {
+                it.printItemInstruction()
+            }
         }
     }
 
