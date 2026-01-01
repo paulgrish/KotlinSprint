@@ -10,11 +10,22 @@ package lesson_20
  * Для проверки работы функции нужно написать класс игрока, в котором будет храниться информация о наличии ключа.
  */
 fun main() {
-
+    listOf(
+        Player("Tom"),
+        Player("Jerry", true),
+    ).forEach {
+        println(
+            { it: Player -> String
+                it.name + ": " + if (it.hasKey)
+                    "Игрок открыл дверь"
+                else
+                    "Дверь заперта"
+            }.invoke(it)
+        )
+    }
 }
 
 class Player(
-
-) {
-
-}
+    val name: String,
+    var hasKey: Boolean = false,
+)
