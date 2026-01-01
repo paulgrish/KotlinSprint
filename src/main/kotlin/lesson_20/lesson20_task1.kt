@@ -10,4 +10,12 @@ package lesson_20
  */
 fun main() {
 
+    val username = "paulgri"
+
+    val splashLambda = { username: String -> String
+        "С наступающим Новым Годом, $username!"
+    }
+
+    println(splashLambda(username))
+
 }
