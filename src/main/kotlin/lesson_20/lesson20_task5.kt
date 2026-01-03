@@ -15,3 +15,33 @@ package lesson_20
 fun main() {
 
 }
+
+class Robot {
+    var currentMessage: String? = null
+    var modifier: ((String) -> String)? = null
+
+    fun say(): String {
+//        if (currentMessage == null)
+//            currentMessage = getMessage()
+        val msg: String = currentMessage ?: getMessage()
+        currentMessage = msg
+
+//        return if (modifier == null)
+//            currentMessage
+//        else
+//            modifier(currentMessage)
+        return modifier?.invoke(msg) ?: msg
+    }
+
+    fun getMessage(): String {
+        val messages = listOf(
+            "Я готов, мой повелитель!",
+            "Система запущена и готова к работе.",
+            "Инициализация прошла успешно, готов к выполнению заданий.",
+            "Есть ошибки инициализации, необходимо проверить журнал и перезапустить систему.",
+            "Привет! Ты кто? Я тебя не узнаю.",
+        )
+//        currentMessage = messages[(0 until messages.size).random()]
+        return messages.shuffled().first()
+    }
+}
