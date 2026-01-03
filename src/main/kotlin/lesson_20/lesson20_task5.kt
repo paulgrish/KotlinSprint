@@ -13,35 +13,35 @@ package lesson_20
  * – Вызов say(). Метод выводит одну фразу в инвертированном виде.
  */
 fun main() {
-
+    val robot = Robot()
+    robot.say()
+    robot.setModifier {
+        it.reversed()
+    }
+    robot.say()
 }
 
 class Robot {
     var currentMessage: String? = null
-    var modifier: ((String) -> String)? = null
+    private var modifier: ((String) -> String)? = null
 
-    fun say(): String {
-//        if (currentMessage == null)
-//            currentMessage = getMessage()
+    fun say() {
         val msg: String = currentMessage ?: getMessage()
         currentMessage = msg
+        println(modifier?.invoke(msg) ?: msg)
+    }
 
-//        return if (modifier == null)
-//            currentMessage
-//        else
-//            modifier(currentMessage)
-        return modifier?.invoke(msg) ?: msg
+    fun setModifier(mdf: ((String) -> String)?) {
+        modifier = mdf
     }
 
     fun getMessage(): String {
-        val messages = listOf(
+        return listOf(
             "Я готов, мой повелитель!",
             "Система запущена и готова к работе.",
             "Инициализация прошла успешно, готов к выполнению заданий.",
             "Есть ошибки инициализации, необходимо проверить журнал и перезапустить систему.",
             "Привет! Ты кто? Я тебя не узнаю.",
-        )
-//        currentMessage = messages[(0 until messages.size).random()]
-        return messages.shuffled().first()
+        ).shuffled().first()
     }
 }
