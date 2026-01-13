@@ -24,7 +24,7 @@ fun main() {
     }
 
     lambdas.forEachIndexed { index: Int, lambda: () -> Unit -> Unit
-        if (index % 2 == 0)
+        if (index % 2 == 1)
             lambda.invoke()
     }
 }
