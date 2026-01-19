@@ -21,8 +21,14 @@ fun main() {
     val player = Player("John", 78)
 
     player.healthReport()
+    println("[isHealthy() = ${player.isHealthy()}]")
     potion(player)
     player.healthReport()
+    println("[isHealthy() = ${player.isHealthy()}]")
+}
+
+fun Player.isHealthy(): Boolean {
+    return health == maxHealth
 }
 
 class Player(
