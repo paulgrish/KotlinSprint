@@ -23,7 +23,7 @@ fun main() {
 
 class Robot {
     var currentMessage: String? = null
-    private var modifier: (String) -> String = defaultModifier
+    private var modifier: (String) -> String = { it }
 
     fun say() {
         val msg: String = currentMessage ?: getMessage()
@@ -39,15 +39,11 @@ class Robot {
         return predefinedMessages.shuffled().first()
     }
 
-    companion object {
-        private val predefinedMessages = listOf(
-            "Я готов, мой повелитель!",
-            "Система запущена и готова к работе.",
-            "Инициализация прошла успешно, готов к выполнению заданий.",
-            "Есть ошибки инициализации, необходимо проверить журнал и перезапустить систему.",
-            "Привет! Ты кто? Я тебя не узнаю.",
-        )
-
-        val defaultModifier: (String) -> String = { it }
-    }
+    private val predefinedMessages = listOf(
+        "Я готов, мой повелитель!",
+        "Система запущена и готова к работе.",
+        "Инициализация прошла успешно, готов к выполнению заданий.",
+        "Есть ошибки инициализации, необходимо проверить журнал и перезапустить систему.",
+        "Привет! Ты кто? Я тебя не узнаю.",
+    )
 }
