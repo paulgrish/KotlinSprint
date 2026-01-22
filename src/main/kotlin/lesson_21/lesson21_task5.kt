@@ -11,9 +11,19 @@ package lesson_21
  * одинаковое максимальное значение, функция должна возвращать первый найденный из них.
  */
 fun main() {
-
+    val expMap = mapOf(
+        "health" to 55,
+        "strong" to 18,
+        "speed" to 78,
+        "jumpiness" to 23,
+        "intelligence" to 78,
+        "force" to 34,
+    )
+    println(expMap.maxCategory())
 }
 
 fun Map<String, Int>.maxCategory(): String {
-
+    return this.maxBy { selector: Map.Entry<String, Int> -> Int
+        selector.value
+    }.key
 }
