@@ -1,5 +1,7 @@
 package lesson_21
 
+import java.io.File
+
 /**
  * Задача 4 к Уроку 21
  *
@@ -15,5 +17,29 @@ package lesson_21
  * https://androidsprint.ru/courses/kotlinsprint/learn/1.2
  */
 fun main() {
-    
+    var file: File = File("src\\main\\kotlin\\lesson_21\\file.txt")
+    println(file.setReadable(true))
+    println(file.setWritable(true))
+    println(file.exists())
+    println(file.canRead())
+    println(file.canWrite())
+    if (!file.exists()) {
+        file.createNewFile()
+//        println(file.setReadable(true))
+//        println(file.setWritable(true))
+        println(file.exists())
+        println(file.canRead())
+        println(file.canWrite())
+    }
+    file.writeText("test\n")
+}
+
+fun File.writeTextAtStart(text: String) {
+    val content: String = if (this.exists()) {
+        readText()
+    } else {
+        this.createNewFile()
+        ""
+    }
+    this.writeText(text.lowercase() + content)
 }
