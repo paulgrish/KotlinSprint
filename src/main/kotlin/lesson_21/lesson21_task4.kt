@@ -17,23 +17,16 @@ import java.io.File
  * https://androidsprint.ru/courses/kotlinsprint/learn/1.2
  */
 fun main() {
-    var file: File = File("src\\main\\kotlin\\lesson_21\\file.txt")
-    println(file.setReadable(true))
-    println(file.setWritable(true))
-    println(file.exists())
-    println(file.canRead())
-    println(file.canWrite())
-    if (!file.exists()) {
-        file.createNewFile()
-//        println(file.setReadable(true))
-//        println(file.setWritable(true))
-        println(file.exists())
-        println(file.canRead())
-        println(file.canWrite())
-    }
-    file.writeText("test\n")
+    val file = File("src\\main\\kotlin\\lesson_21\\file.txt")
+    file.writeTextAtStart("one\n***")
+    file.writeTextAtStart("Two\n")
+    file.writeTextAtStart("THREE\n")
 }
 
+/**
+ * Write text to start of file before existing content. If file not exist, it will created.
+ * Text in "text" parameter write as is without new line, if you need new line you must append it to text.
+ */
 fun File.writeTextAtStart(text: String) {
     val content: String = if (this.exists()) {
         readText()
