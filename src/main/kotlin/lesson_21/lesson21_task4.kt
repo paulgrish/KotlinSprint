@@ -9,6 +9,10 @@ package lesson_21
  * - дополнительные материалы про файлы есть в 1-2 этапах курсовой;
  * - функция-расширение должна записывать текст в нижнем регистре;
  * - функция-расширение должна записывать текст в начало файла.
+ *
+ * ** Инфо про файлы **
+ * https://androidsprint.ru/courses/kotlinsprint/learn/1.1
+ * https://androidsprint.ru/courses/kotlinsprint/learn/1.2
  */
 fun main() {
     
