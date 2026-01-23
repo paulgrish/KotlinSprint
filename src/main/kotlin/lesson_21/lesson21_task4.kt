@@ -1,0 +1,38 @@
+package lesson_21
+
+import java.io.File
+
+/**
+ * Задача 4 к Уроку 21
+ *
+ * В итоговом проекте блока KotlinSprint мы разрабатываем телеграм-бота на Kotlin, который помогает пользователям
+ * учить иностранные слова. Создай extension функцию для класса File из стандартной библиотеки, которая будет
+ * записывать переданное ей слово в файл.
+ * - дополнительные материалы про файлы есть в 1-2 этапах курсовой;
+ * - функция-расширение должна записывать текст в нижнем регистре;
+ * - функция-расширение должна записывать текст в начало файла.
+ *
+ * ** Инфо про файлы **
+ * https://androidsprint.ru/courses/kotlinsprint/learn/1.1
+ * https://androidsprint.ru/courses/kotlinsprint/learn/1.2
+ */
+fun main() {
+    val file = File("src\\main\\kotlin\\lesson_21\\file.txt")
+    file.writeTextAtStart("one\n***")
+    file.writeTextAtStart("Two\n")
+    file.writeTextAtStart("THREE\n")
+}
+
+/**
+ * Write text to start of file before existing content. If file not exist, it will created.
+ * Text in "text" parameter write as is without new line, if you need new line you must append it to text.
+ */
+fun File.writeTextAtStart(text: String) {
+    val content: String = if (this.exists()) {
+        readText()
+    } else {
+        this.createNewFile()
+        ""
+    }
+    this.writeText(text.lowercase() + content)
+}
