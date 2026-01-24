@@ -7,5 +7,9 @@ package lesson_22
  * переменные и выведи их значения в консоль.
  */
 fun main() {
-
+    val good1 = Good("Kiwi", 43.21f, 56)
+    val (name, cost, count) = good1
+    println("Found good: \"$name\", $cost rub. x $count pc.")
 }
+
+data class Good(val name: String, val cost: Float, val count: Int)
