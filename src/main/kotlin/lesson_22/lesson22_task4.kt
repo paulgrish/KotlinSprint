@@ -27,3 +27,22 @@ package lesson_22
 fun main() {
 
 }
+
+class MainScreenViewModel {
+
+    var mainScreenState = MainScreenState("")
+
+    fun loadData() {
+        println("No data")
+        mainScreenState = mainScreenState.copy(isLoading = true)
+        println("Loading data...")
+        Thread.sleep(1000)
+        mainScreenState = mainScreenState.copy(data = "Some data", isLoading = false)
+        println("Loaded data: ${mainScreenState.data}")
+    }
+
+    data class MainScreenState(
+        val data: String,
+        val isLoading: Boolean = false,
+    )
+}
