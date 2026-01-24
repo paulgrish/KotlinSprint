@@ -1,6 +1,7 @@
 package lesson_22
 
-import java.util.Date
+import java.time.ZonedDateTime
+import java.time.ZoneId
 
 /**
  * Задача 5* к Уроку 22
@@ -20,7 +21,7 @@ fun main() {
     val record1 = GalacticGuide(
         "Alpha Centauri",
         "Тройная звездная система, ближайшая до Земли",
-        Date(2026, 1, 24, 22, 14, 18),
+        ZonedDateTime.of(2026, 1, 24, 22, 14, 18, 0, ZoneId.of("Europe/Moscow")),
         4.36f
     )
     println("Запись 1: Информация о месте:")
@@ -33,6 +34,6 @@ fun main() {
 data class GalacticGuide(
     val name: String,
     val description: String,
-    val dateTime: Date,
+    val dateTime: ZonedDateTime,
     val distance: Float,
 )
