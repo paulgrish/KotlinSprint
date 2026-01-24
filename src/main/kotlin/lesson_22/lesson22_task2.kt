@@ -1,4 +1,4 @@
-package org.example.lesson_22
+package lesson_22.task_2
 
 /**
  * Задача 1 к Уроку 22
