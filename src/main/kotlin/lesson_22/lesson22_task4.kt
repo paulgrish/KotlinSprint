@@ -25,7 +25,8 @@ package lesson_22
  * - наличие загруженных данных.
  */
 fun main() {
-
+    val mainScreen = MainScreenViewModel()
+    mainScreen.loadData()
 }
 
 class MainScreenViewModel {
@@ -36,7 +37,6 @@ class MainScreenViewModel {
         println("No data")
         mainScreenState = mainScreenState.copy(isLoading = true)
         println("Loading data...")
-        Thread.sleep(1000)
         mainScreenState = mainScreenState.copy(data = "Some data", isLoading = false)
         println("Loaded data: ${mainScreenState.data}")
     }
